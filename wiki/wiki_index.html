@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Grind Hero | RED SKULL</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/wiki.css">
+    <link rel="stylesheet" href="../wiki/css/wiki-responsive.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos aprimorados para os cards */
+        .preview-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 0, 0, 0.1);
+        }
+        
+        .preview-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(204, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .preview-card:hover {
+            transform: translateY(-15px) rotate3d(1, 5, 0, 10deg);
+            box-shadow: 
+                0 15px 25px rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(204, 0, 0, 0.2);
+            border-color: rgba(204, 0, 0, 0.5);
+        }
+        
+        .preview-card:hover:before {
+            opacity: 1;
+        }
+        
+        .preview-card:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.05) 40%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(-45deg);
+            z-index: -1;
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .preview-card:hover:after {
+            transform: translate(100%, 100%) rotate(-45deg);
+            opacity: 1;
+        }
+        
+        .preview-card h3 {
+            position: relative;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .preview-card:hover h3 {
+            transform: scale(1.05);
+            color: var(--color-red-primary);
+            text-shadow: 0 0 5px rgba(204, 0, 0, 0.3);
+        }
+        
+        .preview-card .read-more-wiki {
+            display: inline-block;
+            position: relative;
+            transition: transform 0.3s ease, color 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .preview-card .read-more-wiki:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-red-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .preview-card:hover .read-more-wiki:before {
+            width: 100%;
+        }
+        
+        /* Estilos para o contador regressivo moderno */
+        #countdown-timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+            font-family: 'Anton', sans-serif;
+        }
+        
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: #000000;
+            color: white;
+            border-radius: 6px;
+            padding: 8px 5px;
+            width: 90px;
+            text-align: center;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3), 
+                       inset 0 0 8px rgba(255, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            margin-top: 6px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+            letter-spacing: 1px;
+        }
+        
+        /* Remover os separadores de dois-pontos */
+        .countdown-separator {
+            display: none;
+        }
+        
+        @keyframes pulse {
+            0% { transform: perspective(500px) rotateX(10deg) scale(1); }
+            50% { transform: perspective(500px) rotateX(10deg) scale(1.03); }
+            100% { transform: perspective(500px) rotateX(10deg) scale(1); }
+        }
+        
+        .countdown-unit {
+            animation: pulse 2s infinite;
+        }
+        
+        .countdown-unit:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .countdown-unit:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+        
+        .countdown-unit:nth-child(5) {
+            animation-delay: 1s;
+        }
+        
+        .countdown-unit:nth-child(7) {
+            animation-delay: 1.5s;
+        }
+        
+        /* Estilos para centralizar o botão do Discord */
+        .discord-cta-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+            margin: 30px 0;
+        }
+        
+        .discord-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #7289da 0%, #5865f2 100%);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4),
+                        0 0 20px rgba(88, 101, 242, 0.2);
+            border: none;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: fit-content;
+            max-width: 90%;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .discord-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(248, 242, 242, 0.2),
+                transparent
+            );
+            transition: left 0.7s ease;
+        }
+        
+        .discord-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(88, 101, 242, 0.6),
+                        0 0 30px rgba(88, 101, 242, 0.3);
+        }
+        
+        .discord-button:hover:before {
+            left: 100%;
+        }
+        .home-info-container {
+        background-color: var(--wiki-card-bg);
+        border: 1px solid var(--wiki-card-border);
+        border-radius: 12px;
+        padding: 25px;
+        margin: 30px 0;
+        text-align: center;
+        }
+        .home-info-container2 {
+        background-color: var(--wiki-card-bg);
+        border: 1px solid var(--wiki-card-border);
+        border-radius: 12px;
+        padding: 25px;
+        margin: 0px 0;
+        text-align: left;
+        }
+    </style>
+</head>
+<body class="preload wiki-page-body">
+    <div id="preloader">
+        <div class="skull-loader">
+            <img src="../images/red-skull-logo.png" alt="RED SKULL">
+            <div class="loading-text">Preparando para a batalha...</div>
+        </div>
+    </div>
+
+    <header id="main-header" class="sticky" role="banner">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="../index.html" class="logo">
+                    <img src="../images/red-skull-logo.png" alt="RED SKULL Logo">
+                </a>
+                <div class="tagline">
+                    <span class="main-tagline">RED SKULL</span>
+                    <span class="sub-tagline">A Elite de Grind Hero</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span class="sword-icon"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Início </a></li> -->
+                    <li><a href="../about.html"> Sobre </a></li>
+                    <li><a href="../join.html"> Recrutamento </a></li>
+                    <li><a href="../achievements.html"> Mural de Glórias </a></li>
+                    <li><a href="../community.html"> Comunidade </a></li>
+                    <li><a href="wiki_index.html" class="active"> Wiki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="wiki-container">
+        <aside id="wiki-sidebar">
+            <h2>Navegação da Wiki</h2>
+            <nav>
+                <ul>
+                    <li><a href="wiki_index.html" class="active-wiki-link">Página Inicial</a></li>
+                    <li class="sidebar-category">Básico do Jogo</li>
+                    <li><a href="introducao.html">Introdução</a></li>
+                    <li><a href="mecanicas_principais.html">Mecânicas Principais</a></li>
+                    <li><a href="jogabilidade.html">Jogabilidade</a></li>
+                    <li><a href="servidores.html">Servidores</a></li>
+                    <li><a href="dicas_tutoriais.html">Dicas e Tutoriais</a></li>
+                    <li class="sidebar-category">Classes e Treinamento</li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="treinamento_status.html">Treinamento e Status</a></li>
+                    <li class="sidebar-category">Conteúdo do Jogo</li>
+                    <li><a href="mapas.html">Mapas e Regiões</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                    <li><a href="quests_cacadas.html">Quests e Caçadas</a></li>
+                    <li><a href="sigils.html">Sigils</a></li>
+                    <li><a href="mobs.html">Monstros</a></li>
+                    <li class="sidebar-category">Aspectos Sociais</li>
+                    <li><a href="guildas.html">Guildas</a></li>
+                    <li><a href="pvp.html">PvP</a></li>
+                    <li><a href="em_desenvolvimento.html">Em Desenvolvimento</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section id="wiki-main-content">
+            <div class="breadcrumb">
+                <a href="../index.html">RED SKULL</a> &gt; <span>Wiki</span>
+            </div>
+
+            <section class="wiki-hero-section">
+                <video autoplay muted loop id="wiki-hero-video">
+                    <source src="../videos/battle-background.mp4" type="video/mp4">
+                    <!-- Fallback para quando o vídeo não pode ser carregado -->
+                    <div class="video-fallback-message">
+                        Seu navegador não suporta vídeos HTML5 ou o vídeo não pode ser carregado.
+                    </div>
+                </video>
+                <div class="hero-overlay">
+                    <h1 class="page-title">Bem-vindo ao Universo de Grind Hero</h1>
+                    <div id="countdown-timer">
+                        <div class="countdown-unit">
+                            <div class="countdown-value" id="days">--</div>
+                            <div class="countdown-label">Dias</div>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-unit">
+                            <div class="countdown-value" id="hours">--</div>
+                            <div class="countdown-label">Horas</div>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-unit">
+                            <div class="countdown-value" id="minutes">--</div>
+                            <div class="countdown-label">Min</div>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-unit">
+                            <div class="countdown-value" id="seconds">--</div>
+                            <div class="countdown-label">Seg</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+                       <!-- Busca e navegação rápida -->
+            <div class="wiki-search-bar-container">
+                <form class="wiki-search-form" action="search-results.html" method="get">
+                    <input type="text" id="wiki-search-bar" name="q" placeholder="Buscar na wiki..." autocomplete="off">
+                    <button type="submit" id="wiki-search-button">Buscar</button>
+                </form>
+            </div>
+            <div class="home-info-container2">
+                <div class="wiki-section-preview">
+                    <h2>Características Principais</h2>
+                    <p class="intro-text">Grind Hero é um MMORPG inovador que combina elementos de progressão contínua, estratégia de builds e competição entre jogadores em um mundo vasto e dinâmico.</p>
+                    <p class="intro-text">Diferente de outros MMORPGs, em Grind Hero seu personagem continua evoluindo mesmo quando você está offline! </p>
+                    <div class="preview-grid">
+                        <div class="preview-card interactive-card">
+                            <h3>Mapas Imersivos</h3>
+                            <p class="preview-text">Explore biomas variados com climas próprios e desafios únicos.</p>
+                            <a href="em_desenvolvimento.html#mapas" class="read-more-wiki">Saiba Mais &rarr;</a>
+                        </div>
+                        <div class="preview-card interactive-card">
+                            <h3>Progressão Contínua</h3>
+                            <p class="preview-text">Evolua seu personagem 24/7, mesmo quando estiver offline.</p>
+                            <a href="treinamento_status.html" class="read-more-wiki">Saiba Mais &rarr;</a>
+                        </div>
+                        <div class="preview-card interactive-card">
+                            <h3>Sistema Único de Classes</h3>
+                            <p class="preview-text">Descubra um sistema de progressão de classes flexível e estratégico.</p>
+                            <a href="classes.html" class="read-more-wiki">Saiba Mais &rarr;</a>
+                        </div>
+                        <div class="preview-card interactive-card">
+                            <h3>PvP Estratégico</h3>
+                            <p class="preview-text">Batalhas que premiam a estratégia e habilidade sobre o grinding puro.</p>
+                            <a href="em_desenvolvimento.html#pvp" class="read-more-wiki">Saiba Mais &rarr;</a>
+                        </div>
+                        <div class="preview-card interactive-card">
+                            <h3>Economia de Jogadores</h3>
+                            <p class="preview-text">Participe de um mercado dinâmico controlado pela comunidade.</p>
+                            <a href="em_desenvolvimento.html#economia" class="read-more-wiki">Saiba Mais &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="home-info-container">
+                <h2>Participe do Desenvolvimento!</h2>
+                <p>Quer ajudar a moldar Grind Hero? Entre em nossa comunidade e compartilhe sua opinião:</p>
+                    <div class="discord-cta-container">
+                        <a href="https://discord.gg/GNcyJBzVMF" target="_blank" class="discord-button">JUNTE-SE À COMUNIDADE NO DISCORD</a>
+                    </div>                
+                <p>Prepare-se para forjar sua lenda em Grind Hero!</p>
+            </div>
+
+            <div class="home-info-container2">
+                <section class="recent-updates-feed">
+                    <h2>Últimas Atualizações da Wiki</h2>
+                    <ul id="recent-updates-list">
+                        <li><span class="new-badge">NOVO</span> <a href="classes.html">Guia Detalhado: Classes T1 e T2!</a> - <span class="update-date">13/05/2025</span></li>
+                        <li><span class="new-badge">NOVO</span> <a href="treinamento_status.html">Sistema de Treinamento e Atributos Explicado!</a> - <span class="update-date">13/05/2025</span></li>
+                        <li><a href="pets.html">Conheça os Pets de Grind Hero!</a> - <span class="update-date">12/05/2025</span></li>
+                        <li><a href="wiki_index.html">Página Inicial da Wiki Reformulada!</a> - <span class="update-date">12/05/2025</span></li>
+                    </ul>
+                </section>
+            </div>
+            <div class="wiki-feedback-section">
+                <p>Esta página foi útil?</p>
+                <button class="feedback-yes">Sim</button>
+                <button class="feedback-no">Não</button>
+            </div>
+
+        </section>
+    </main>
+
+    <div class="wiki-ui-controls">
+        <button id="font-increase-button">A+</button>
+        <button id="font-decrease-button">A-</button>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../images/red-skull-logo.png" alt="RED SKULL">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../about.html">Sobre</a></li>
+                    <li><a href="../join.html">Recrutamento</a></li>
+                    <li><a href="wiki_index.html">Wiki</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#" target="_blank" class="social-link discord-link">Discord</a>
+                <a href="#" target="_blank" class="social-link youtube-link">YouTube</a>
+                <a href="#" target="_blank" class="social-link twitter-link">Twitter</a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 RED SKULL. Todos os direitos reservados. Jogo Grind Hero por Kahdymus.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/animations.js" defer></script>
+    <script src="js/wiki_interactive.js" defer></script>
+    <script src="../js/ux-improvements.js" defer></script>
+    <script src="../js/mobile-menu.js" defer></script>
+    <script>
+        // Script para o contador regressivo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data de lançamento (por exemplo: 1º de janeiro de 2026)
+            const launchDate = new Date("Jan 1, 2026 00:00:00").getTime();
+            
+            // Atualização do contador a cada segundo
+            const countdownTimer = setInterval(function() {
+                // Data e hora atuais
+                const now = new Date().getTime();
+                
+                // Distância entre a data atual e a data de lançamento
+                const distance = launchDate - now;
+                
+                // Cálculos de tempo para dias, horas, minutos e segundos
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Exibição do resultado no elemento com id="countdown-timer"
+                document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+                
+                // Se o contador chegar a zero
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById("countdown-timer").innerHTML = "JOGO LANÇADO!";
+                }
+            }, 1000);
+        });
+        
+        // Script para efeito parallax nos cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.preview-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // posição X do mouse dentro do card
+                    const y = e.clientY - rect.top; // posição Y do mouse dentro do card
+                    
+                    // Calcular a posição relativa do mouse dentro do card (0 a 1)
+                    const xPercent = x / rect.width;
+                    const yPercent = y / rect.height;
+                    
+                    // Calcular o ângulo da rotação (quanto menor o valor, maior o efeito)
+                    const xRotation = (yPercent - 0.5) * 10; // -5 a 5 graus
+                    const yRotation = (xPercent - 0.5) * -10; // -5 a 5 graus
+                    
+                    // Aplicar a transformação
+                    card.style.transform = `
+                        perspective(1000px)
+                        rotateX(${xRotation}deg)
+                        rotateY(${yRotation}deg)
+                        translateY(-5px)
+                        scale3d(1.05, 1.05, 1.05)
+                    `;
+                    
+                    // Adicionar efeito de brilho dinâmico
+                    const glareX = 100 * xPercent;
+                    const glareY = 100 * yPercent;
+                    card.style.background = `
+                        radial-gradient(
+                            circle at ${glareX}% ${glareY}%,
+                            rgba(255, 255, 255, 0.03) 0%,
+                            rgba(0, 0, 0, 0.1) 50%
+                        )
+                    `;
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    // Resetar a transformação quando o mouse sai do card
+                    card.style.transform = '';
+                    card.style.background = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+

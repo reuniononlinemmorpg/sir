@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comunidade da guilda RED SKULL - Conecte-se com outros guerreiros e participe de eventos exclusivos">
+    <meta name="keywords" content="RED SKULL, guilda, Grind Hero, comunidade, Discord, redes sociais">
+    <title>Comunidade | RED SKULL</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/ux-improvements.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/audio.js" defer></script>
+    <script src="js/ux-improvements.js" defer></script>
+</head>
+<body class="preload">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="skull-loader">
+            <img src="images/red-skull-logo.png" alt="RED SKULL">
+            <div class="loading-text">Preparando para a batalha...</div>
+        </div>
+    </div>
+
+    <!-- Controle de Áudio -->
+    <div id="audio-control">
+        <button id="toggle-audio" aria-label="Ativar/Desativar som">
+            <span class="audio-icon audio-on"></span>
+        </button>
+    </div>
+
+    <!-- Modo Guerra Toggle -->
+    <div id="war-mode-toggle">
+        <button id="toggle-war-mode" aria-label="Ativar/Desativar Modo Guerra">
+            <span class="war-icon">⚔️</span>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="images/red-skull-logo.png" alt="RED SKULL">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span class="sword-icon"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="join.html">Recrutamento</a></li>
+                    <li><a href="achievements.html">Mural de Glórias</a></li>
+                    <li><a href="community.html" class="active">Comunidade</a></li>
+                    <li><a href="wiki/wiki_index.html">Wiki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="community-hero" class="parallax-bg" data-speed="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1 class="page-title reveal">Comunidade</h1>
+            <p class="page-subtitle reveal">Conecte-se com outros guerreiros e participe de eventos exclusivos</p>
+        </div>
+    </section>
+
+    <!-- Discord Section -->
+    <section id="discord-full">
+        <div class="container">
+            <h2 class="section-title reveal">Discord Oficial</h2>
+            <div class="discord-full-container reveal">
+                <div class="discord-info">
+                    <p class="discord-description">Nosso Discord é o centro nervoso da RED SKULL. Aqui você encontrará canais para coordenação de raids, estratégias de PvP, anúncios importantes e muito mais. Todos os membros devem estar ativos no Discord.</p>
+                    <div class="discord-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <img src="images/icon-channels.png" alt="Canais">
+                            </div>
+                            <div class="feature-content">
+                                <h3>24 Canais Especializados</h3>
+                                <p>Canais dedicados para cada tipo de atividade, desde raids até mercado de itens.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <img src="images/icon-roles.png" alt="Cargos">
+                            </div>
+                            <div class="feature-content">
+                                <h3>Sistema de Cargos</h3>
+                                <p>Cargos sincronizados com a hierarquia da guilda, refletindo seu status no jogo.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <img src="images/icon-bots.png" alt="Bots">
+                            </div>
+                            <div class="feature-content">
+                                <h3>Bots Personalizados</h3>
+                                <p>Bots exclusivos para rastreamento de conquistas, agendamento de eventos e muito mais.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <img src="images/icon-voice.png" alt="Voz">
+                            </div>
+                            <div class="feature-content">
+                                <h3>Canais de Voz de Alta Qualidade</h3>
+                                <p>Comunicação clara e sem lag durante batalhas intensas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="discord-stats">
+                        <div class="stat">
+                            <span class="stat-value">1,248</span>
+                            <span class="stat-label">Membros</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">187</span>
+                            <span class="stat-label">Online</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">24</span>
+                            <span class="stat-label">Canais</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">Bots</span>
+                        </div>
+                    </div>
+                    <a href="https://discord.gg/redskull" class="discord-button" target="_blank">Entrar no Discord</a>
+                </div>
+                <div class="discord-widget">
+                    <iframe src="https://discord.com/widget?id=123456789&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redes Sociais Section -->
+    <section id="social-media">
+        <div class="container">
+            <h2 class="section-title reveal">Redes Sociais</h2>
+            <div class="social-media-grid reveal">
+                <div class="social-card youtube">
+                    <div class="social-icon">
+                        <img src="images/youtube-large.png" alt="YouTube">
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>Vídeos semanais com highlights de batalhas, tutoriais de classes e cobertura de eventos.</p>
+                    <div class="social-stats">
+                        <div class="stat">
+                            <span class="stat-value">25K</span>
+                            <span class="stat-label">Inscritos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">187</span>
+                            <span class="stat-label">Vídeos</span>
+                        </div>
+                    </div>
+                    <a href="https://youtube.com/redskullguild" class="social-button" target="_blank">Inscrever-se</a>
+                </div>
+                <div class="social-card twitch">
+                    <div class="social-icon">
+                        <img src="images/twitch-large.png" alt="Twitch">
+                    </div>
+                    <h3>Twitch</h3>
+                    <p>Transmissões ao vivo de raids, torneios PvP e eventos especiais da guilda.</p>
+                    <div class="social-stats">
+                        <div class="stat">
+                            <span class="stat-value">18K</span>
+                            <span class="stat-label">Seguidores</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">5</span>
+                            <span class="stat-label">Streamers</span>
+                        </div>
+                    </div>
+                    <a href="https://twitch.tv/redskullguild" class="social-button" target="_blank">Seguir</a>
+                </div>
+                <div class="social-card instagram">
+                    <div class="social-icon">
+                        <img src="images/instagram-large.png" alt="Instagram">
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Imagens de batalhas épicas, equipamentos lendários e bastidores da guilda.</p>
+                    <div class="social-stats">
+                        <div class="stat">
+                            <span class="stat-value">12K</span>
+                            <span class="stat-label">Seguidores</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">342</span>
+                            <span class="stat-label">Posts</span>
+                        </div>
+                    </div>
+                    <a href="https://instagram.com/redskullguild" class="social-button" target="_blank">Seguir</a>
+                </div>
+                <div class="social-card twitter">
+                    <div class="social-icon">
+                        <img src="images/twitter-large.png" alt="Twitter">
+                    </div>
+                    <h3>Twitter</h3>
+                    <p>Atualizações em tempo real, anúncios de eventos e interação com a comunidade.</p>
+                    <div class="social-stats">
+                        <div class="stat">
+                            <span class="stat-value">15K</span>
+                            <span class="stat-label">Seguidores</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">2.8K</span>
+                            <span class="stat-label">Tweets</span>
+                        </div>
+                    </div>
+                    <a href="https://twitter.com/redskullguild" class="social-button" target="_blank">Seguir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Streamers Section -->
+    <section id="streamers">
+        <div class="container">
+            <h2 class="section-title reveal">Nossos Streamers</h2>
+            <div class="streamers-grid reveal">
+                <div class="streamer-card">
+                    <div class="streamer-header">
+                        <div class="streamer-avatar">
+                            <img src="images/streamer-1.jpg" alt="BloodThrone">
+                            <div class="live-badge">AO VIVO</div>
+                        </div>
+                        <div class="streamer-info">
+                            <h3>BloodThrone</h3>
+                            <p class="streamer-role">Líder Supremo • Guerreiro</p>
+                        </div>
+                    </div>
+                    <div class="stream-preview">
+                        <img src="images/stream-preview-1.jpg" alt="Preview da Stream">
+                        <div class="stream-overlay">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="stream-details">
+                        <h4>Raid Noturna: Abismo Eterno (Pesadelo)</h4>
+                        <p>Assista ao vivo enquanto lideramos a raid mais difícil do jogo!</p>
+                        <div class="stream-meta">
+                            <span class="viewers">1,248 espectadores</span>
+                            <span class="schedule">Seg, Qua, Sex • 21:00</span>
+                        </div>
+                    </div>
+                    <a href="https://twitch.tv/bloodthrone" class="watch-button" target="_blank">Assistir Agora</a>
+                </div>
+                <div class="streamer-card">
+                    <div class="streamer-header">
+                        <div class="streamer-avatar">
+                            <img src="images/streamer-2.jpg" alt="CrimsonWitch">
+                        </div>
+                        <div class="streamer-info">
+                            <h3>CrimsonWitch</h3>
+                            <p class="streamer-role">Maga de Elite • Feiticeira</p>
+                        </div>
+                    </div>
+                    <div class="stream-preview">
+                        <img src="images/stream-preview-2.jpg" alt="Preview da Stream">
+                        <div class="stream-overlay">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="stream-details">
+                        <h4>Guia de Build: Feiticeira de Fogo</h4>
+                        <p>Tutoriais detalhados sobre builds, rotações e estratégias para feiticeiras.</p>
+                        <div class="stream-meta">
+                            <span class="schedule">Ter, Qui • 19:00</span>
+                        </div>
+                    </div>
+                    <a href="https://twitch.tv/crimsonwitch" class="watch-button" target="_blank">Ver Canal</a>
+                </div>
+                <div class="streamer-card">
+                    <div class="streamer-header">
+                        <div class="streamer-avatar">
+                            <img src="images/streamer-3.jpg" alt="SkullReaper">
+                        </div>
+                        <div class="streamer-info">
+                            <h3>SkullReaper</h3>
+                            <p class="streamer-role">Cavaleiro do Crânio • Assassino</p>
+                        </div>
+                    </div>
+                    <div class="stream-preview">
+                        <img src="images/stream-preview-3.jpg" alt="Preview da Stream">
+                        <div class="stream-overlay">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="stream-details">
+                        <h4>Arena de Sangue: Road to Challenger</h4>
+                        <p>PvP de alto nível com o melhor assassino do servidor.</p>
+                        <div class="stream-meta">
+                            <span class="schedule">Sáb, Dom • 20:00</span>
+                        </div>
+                    </div>
+                    <a href="https://twitch.tv/skullreaper" class="watch-button" target="_blank">Ver Canal</a>
+                </div>
+            </div>
+            <div class="view-more-container">
+                <a href="streamers.html" class="view-more-button">Ver Todos os Streamers</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fórum Section -->
+    <section id="forum">
+        <div class="container">
+            <h2 class="section-title reveal">Fórum da Guilda</h2>
+            <div class="forum-container reveal">
+                <div class="forum-description">
+                    <p>Nosso fórum é o local para discussões aprofundadas sobre estratégias, builds e planejamento de longo prazo. Diferente do Discord, que é focado em comunicação rápida, o fórum preserva conhecimento valioso para consulta futura.</p>
+                </div>
+                <div class="forum-categories">
+                    <div class="forum-category">
+                        <div class="category-icon">
+                            <img src="images/icon-announcements.png" alt="Anúncios">
+                        </div>
+                        <div class="category-info">
+                            <h3>Anúncios Oficiais</h3>
+                            <p>Comunicados importantes da liderança da guilda.</p>
+                            <div class="category-stats">
+                                <span>42 tópicos</span>
+                                <span>187 respostas</span>
+                                <span>Último: 2h atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="forum-category">
+                        <div class="category-icon">
+                            <img src="images/icon-strategy.png" alt="Estratégias">
+                        </div>
+                        <div class="category-info">
+                            <h3>Estratégias e Guias</h3>
+                            <p>Discussões detalhadas sobre táticas para raids, dungeons e PvP.</p>
+                            <div class="category-stats">
+                                <span>156 tópicos</span>
+                                <span>2,348 respostas</span>
+                                <span>Último: 30min atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="forum-category">
+                        <div class="category-icon">
+                            <img src="images/icon-classes.png" alt="Classes">
+                        </div>
+                        <div class="category-info">
+                            <h3>Classes e Builds</h3>
+                            <p>Fóruns específicos para cada classe com builds otimizadas.</p>
+                            <div class="category-stats">
+                                <span>248 tópicos</span>
+                                <span>5,127 respostas</span>
+                                <span>Último: 15min atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="forum-category">
+                        <div class="category-icon">
+                            <img src="images/icon-events.png" alt="Eventos">
+                        </div>
+                        <div class="category-info">
+                            <h3>Eventos e Calendário</h3>
+                            <p>Organização e discussão de eventos da guilda.</p>
+                            <div class="category-stats">
+                                <span>87 tópicos</span>
+                                <span>1,245 respostas</span>
+                                <span>Último: 1h atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="forum-category">
+                        <div class="category-icon">
+                            <img src="images/icon-market.png" alt="Mercado">
+                        </div>
+                        <div class="category-info">
+                            <h3>Mercado e Comércio</h3>
+                            <p>Troca de itens e recursos entre membros da guilda.</p>
+                            <div class="category-stats">
+                                <span>124 tópicos</span>
+                                <span>3,456 respostas</span>
+                                <span>Último: 5min atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="forum-category">
+                        <div class="category-icon">
+                            <img src="images/icon-offtopic.png" alt="Off-Topic">
+                        </div>
+                        <div class="category-info">
+                            <h3>Off-Topic</h3>
+                            <p>Discussões gerais não relacionadas diretamente ao jogo.</p>
+                            <div class="category-stats">
+                                <span>98 tópicos</span>
+                                <span>2,789 respostas</span>
+                                <span>Último: 10min atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="forum-access">
+                    <p>O acesso completo ao fórum é exclusivo para membros da guilda. Visitantes podem visualizar apenas as seções públicas.</p>
+                    <div class="forum-buttons">
+                        <a href="https://forum.redskullguild.com" class="forum-button" target="_blank">Acessar Fórum</a>
+                        <a href="join.html" class="forum-button secondary">Tornar-se Membro</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria da Comunidade Section -->
+    <section id="community-gallery">
+        <div class="container">
+            <h2 class="section-title reveal">Galeria da Comunidade</h2>
+            <div class="gallery-description reveal">
+                <p>Imagens e vídeos compartilhados por membros da RED SKULL, mostrando momentos épicos, conquistas e a camaradagem da nossa guilda.</p>
+            </div>
+            <div class="community-gallery-grid reveal">
+                <div class="gallery-item">
+                    <img src="images/community-1.jpg" alt="Raid Noturna">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Raid Noturna</h3>
+                            <p>Por: BloodThrone</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/community-2.jpg" alt="Vitória na Arena">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Vitória na Arena</h3>
+                            <p>Por: SkullReaper</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/community-3.jpg" alt="Encontro da Guilda">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Encontro da Guilda</h3>
+                            <p>Por: CrimsonWitch</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/community-4.jpg" alt="Novo Equipamento">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Novo Equipamento</h3>
+                            <p>Por: IronWolf</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/community-5.jpg" alt="Conquista Territorial">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Conquista Territorial</h3>
+                            <p>Por: DarkVenom</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/community-6.jpg" alt="Ritual de Sangue">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Ritual de Sangue</h3>
+                            <p>Por: BloodFang</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/community-7.jpg" alt="Treinamento PvP">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Treinamento PvP</h3>
+                            <p>Por: ShadowBlade</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/community-8.jpg" alt="Celebração de Vitória">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Celebração de Vitória</h3>
+                            <p>Por: FrostFang</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more-container reveal">
+                <a href="gallery.html" class="view-more-button">Ver Galeria Completa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos da Comunidade Section -->
+    <section id="community-events">
+        <div class="container">
+            <h2 class="section-title reveal">Eventos da Comunidade</h2>
+            <div class="community-events-grid reveal">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">MAI</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Torneio Interno de PvP</h3>
+                        <p class="event-time">19:00 - 22:00</p>
+                        <p class="event-description">Competição entre membros da guilda com prêmios exclusivos para os vencedores.</p>
+                        <div class="event-meta">
+                            <span class="event-location">Arena de Sangue</span>
+                            <span class="event-organizer">Org: SkullReaper</span>
+                        </div>
+                    </div>
+                    <div class="event-action">
+                        <button class="event-join">Participar</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">22</span>
+                        <span class="month">MAI</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Workshop de Estratégias</h3>
+                        <p class="event-time">20:00 - 21:30</p>
+                        <p class="event-description">Sessão de treinamento focada em táticas avançadas para a próxima expansão.</p>
+                        <div class="event-meta">
+                            <span class="event-location">Discord - Canal de Voz</span>
+                            <span class="event-organizer">Org: ShadowHex</span>
+                        </div>
+                    </div>
+                    <div class="event-action">
+                        <button class="event-join">Participar</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">05</span>
+                        <span class="month">JUN</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Aniversário da Guilda</h3>
+                        <p class="event-time">19:00 - 00:00</p>
+                        <p class="event-description">Celebração de 5 anos da RED SKULL com eventos especiais, sorteios e muito mais.</p>
+                        <div class="event-meta">
+                            <span class="event-location">Fortaleza da Guilda</span>
+                            <span class="event-organizer">Org: BloodThrone</span>
+                        </div>
+                    </div>
+                    <div class="event-action">
+                        <button class="event-join">Participar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more-container reveal">
+                <a href="events.html" class="view-more-button">Ver Todos os Eventos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title reveal">Entre em Contato</h2>
+            <div class="contact-container reveal">
+                <div class="contact-info">
+                    <p>Para assuntos oficiais, dúvidas ou propostas de parceria, entre em contato com nossa equipe de liderança.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <img src="images/icon-email.png" alt="Email">
+                            </div>
+                            <div class="method-details">
+                                <h3>Email</h3>
+                                <p><a href="mailto:contact@redskullguild.com">contact@redskullguild.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <img src="images/icon-discord.png" alt="Discord">
+                            </div>
+                            <div class="method-details">
+                                <h3>Discord</h3>
+                                <p>Canal #contato-liderança</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <img src="images/icon-forum.png" alt="Fórum">
+                            </div>
+                            <div class="method-details">
+                                <h3>Fórum</h3>
+                                <p>Seção "Contato com Liderança"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-note">
+                        <p>Para recrutamento, utilize o <a href="join.html">formulário de inscrição</a> específico.</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form" class="blood-form">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="partnership">Proposta de Parceria</option>
+                                <option value="question">Dúvida Geral</option>
+                                <option value="report">Reportar Problema</option>
+                                <option value="other">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="terms-contact" name="terms-contact" required>
+                            <label for="terms-contact">Concordo com a <a href="privacy.html" target="_blank">Política de Privacidade</a>.</label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-button">Enviar Mensagem</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <img src="images/red-skull-logo-small.png" alt="RED SKULL">
+                        </div>
+                        <p class="footer-slogan">"Red Skull é guerra, sangue e glória!"</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <span class="social-icon youtube"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitch">
+                                <span class="social-icon twitch"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Discord">
+                                <span class="social-icon discord"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <span class="social-icon instagram"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Navegação</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Início</a></li>
+                            <li><a href="about.html">Sobre</a></li>
+                            <li><a href="join.html">Recrutamento</a></li>
+                            <li><a href="achievements.html">Mural de Glórias</a></li>
+                            <li><a href="community.html">Comunidade</a></li>
+                            <li><a href="wiki/wiki_index.html">Wiki</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Recursos</h3>
+                        <ul class="footer-links">
+                            <li><a href="events.html">Calendário</a></li>
+                            <li><a href="gallery.html">Galeria</a></li>
+                            <li><a href="rankings.html">Rankings</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Contato</h3>
+                        <p>Para assuntos oficiais, entre em contato com nossos líderes:</p>
+                        <a href="mailto:contact@redskullguild.com" class="contact-email">contact@redskullguild.com</a>
+                        <div class="donate-container">
+                            <a href="donate.html" class="donate-button">Abasteça a Forja</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">© 2025 RED SKULL Guild. Todos os direitos reservados.</p>
+                <p class="disclaimer">Grind Hero é uma marca registrada de seus respectivos proprietários.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Easter Egg (Clique 3x no crânio) -->
+    <div id="easter-egg" class="hidden">
+        <div class="easter-egg-content">
+            <h3>Código Secreto Desbloqueado!</h3>
+            <div class="secret-code">RS-GLORY-2025</div>
+            <p>Use este código em Grind Hero para receber um item exclusivo!</p>
+            <button id="close-easter-egg">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="background-music" loop>
+        <source src="audio/battle-drums.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound">
+        <source src="audio/sword-clash.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>

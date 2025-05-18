@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes de Personagens | Wiki Grind Hero | RED SKULL</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/wiki.css">
+    <link rel="stylesheet" href="../wiki/css/wiki-responsive.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para a página de classes */
+        .class-selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .class-card {
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--wiki-text-color);
+            position: relative;
+            cursor: pointer;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .class-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 15px rgba(204, 0, 0, 0.25);
+            border-color: var(--color-red-primary);
+        }
+        .class-card img.class-icon {
+            width: 80px; /* Ajustar tamanho conforme necessário */
+            height: 80px;
+            margin-bottom: 10px;
+            border-radius: 7%; /* Ícones redondos ou quadrados, ajustar */
+            background-color: var(--color-grey-dark); /* Placeholder */
+        }
+        .class-card h3 {
+            font-family: 'Anton', sans-serif;
+            color: var(--wiki-heading-color);
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+        .tier-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: var(--wiki-card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--wiki-card-border);
+        }
+        .tier-section h2 {
+            margin-top: 0;
+            color: var(--wiki-heading-color);
+            border-bottom: 2px solid var(--color-red-primary);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .tier-description {
+            margin-bottom: 20px;
+        }
+        .class-tier-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--color-red-primary);
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .class-details {
+            display: none;
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .class-details h2 {
+            color: var(--wiki-heading-color);
+            border-bottom: 2px solid var(--color-red-primary);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .class-details.active {
+            display: block;
+        }
+        .class-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+        .class-stats {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .class-stats h3 {
+            margin-top: 0;
+            color: var(--wiki-heading-color);
+            border-bottom: 1px solid var(--wiki-card-border);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .stat-bar {
+            height: 20px;
+            background-color: rgba(204, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            background-color: var(--color-red-primary);
+            border-radius: 10px;
+        }
+        .stat-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .class-abilities {
+            margin-top: 20px;
+        }
+        .ability-card {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .ability-card h4 {
+            margin-top: 0;
+            color: var(--wiki-heading-color);
+        }
+        .ability-description {
+            margin-top: 8px;
+        }
+        .close-details {
+            background-color: var(--color-red-primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .close-details:hover {
+            background-color: #990000;
+        }
+        .class-info-container {
+        background-color: var(--wiki-card-bg);
+        border: 1px solid var(--wiki-card-border);
+        border-radius: 8px;
+        padding: 25px;
+        margin: 30px 0;
+        text-align: left;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="preload wiki-page-body">
+    <div id="preloader">
+        <div class="skull-loader">
+            <img src="../images/red-skull-logo.png" alt="RED SKULL">
+            <div class="loading-text">Preparando para a batalha...</div>
+        </div>
+    </div>
+
+    <header id="main-header" class="sticky">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="../index.html" class="logo">
+                    <img src="../images/red-skull-logo.png" alt="RED SKULL Logo">
+                </a>
+                <div class="tagline">
+                    <span class="main-tagline">RED SKULL</span>
+                    <span class="sub-tagline">A Elite de Grind Hero</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span class="sword-icon"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../about.html">Sobre</a></li>
+                    <li><a href="../join.html">Recrutamento</a></li>
+                    <li><a href="../achievements.html">Mural de Glórias</a></li>
+                    <li><a href="../community.html">Comunidade</a></li>
+                    <li><a href="wiki_index.html" class="active">Wiki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="wiki-container">
+        <aside id="wiki-sidebar">
+            <h2>Navegação da Wiki</h2>
+            <nav>
+                <ul>
+                    <li><a href="wiki_index.html">Página Inicial</a></li>
+                    <li class="sidebar-category">Básico do Jogo</li>
+                    <li><a href="introducao.html">Introdução</a></li>
+                    <li><a href="mecanicas_principais.html">Mecânicas Principais</a></li>
+                    <li><a href="jogabilidade.html">Jogabilidade</a></li>
+                    <li><a href="servidores.html">Servidores</a></li>
+                    <li><a href="dicas_tutoriais.html">Dicas e Tutoriais</a></li>
+                    <li class="sidebar-category">Classes e Treinamento</li>
+                    <li><a href="classes.html" class="active-wiki-link">Classes</a></li>
+                    <li><a href="treinamento_status.html">Treinamento e Status</a></li>
+                    <li class="sidebar-category">Conteúdo do Jogo</li>
+                    <li><a href="mapas.html">Mapas e Regiões</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                    <li><a href="quests_cacadas.html">Quests e Caçadas</a></li>
+                    <li><a href="sigils.html">Sigils</a></li>
+                    <li><a href="mobs.html">Monstros</a></li>
+                    <li class="sidebar-category">Aspectos Sociais</li>
+                    <li><a href="guildas.html">Guildas</a></li>
+                    <li><a href="pvp.html">PvP</a></li>
+                    <li><a href="em_desenvolvimento.html">Em Desenvolvimento</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section id="wiki-main-content">
+            <div class="breadcrumb">
+                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Classes</span>
+            </div>
+                        
+            <!-- Busca e navegação rápida -->
+            <div class="wiki-search-bar-container">
+                <form class="wiki-search-form" action="search-results.html" method="get">
+                    <input type="text" id="wiki-search-bar" name="q" placeholder="Buscar na wiki..." autocomplete="off">
+                    <button type="submit" id="wiki-search-button">Buscar</button>
+                </form>
+            </div>
+            <div class="class-info-container">
+                <h1 class="page-title">Classes de Personagens</h1>
+                <p>Escolha seu estilo de jogo entre diversas classes únicas, cada uma com mecânicas distintas e caminhos de progressão flexíveis. Não existem classes "melhores" - apenas estilos de jogo diferentes que se adaptam a diversas preferências. <strong>Clique em uma classe para ver detalhes.</strong></p>
+            </div>
+            <div class="tier-section">
+                <h2>Classe Inicial (Tier 0)</h2>
+                <div class="tier-description">
+                    <p>Todos os jogadores começam com a classe Recruta, que oferece uma experiência balanceada e versátil para novos aventureiros.</p>
+                </div>
+            <div class="class-selector-grid">
+                    <div class="class-card" data-class="recruta">
+                        <img src="../images/class_icon_placeholder.png" alt="Recruta Icon" class="class-icon">
+                        <div class="class-tier-badge">T0</div>
+                    <h3>Recruta</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tier-section">
+                <h2>Classes Tier 1</h2>
+                <div class="tier-description">
+                    <p>As classes T1 representam a primeira especialização do seu personagem. Escolha com base no seu estilo de jogo preferido.</p>
+                </div>
+                <div class="class-selector-grid">
+                    <div class="class-card" data-class="fighter">
+                    <img src="../wiki/Imagens/classes/lutador.png" alt="Fighter Icon" class="class-icon">
+                        <div class="class-tier-badge">T1</div>
+                    <h3>Fighter</h3>
+                    </div>
+                    <div class="class-card" data-class="mago">
+                    <img src="../wiki/Imagens/classes/mago.png" alt="Mago Icon" class="class-icon">
+                        <div class="class-tier-badge">T1</div>
+                    <h3>Mago</h3>
+                    </div>
+                    <div class="class-card" data-class="arqueiro">
+                    <img src="../wiki/Imagens/classes/arqueiro.png" alt="Arqueiro Icon" class="class-icon">
+                        <div class="class-tier-badge">T1</div>
+                    <h3>Arqueiro</h3>
+                    </div>
+                    <div class="class-card" data-class="healer">
+                    <img src="../wiki/Imagens/classes/healer.png" alt="Healer Icon" class="class-icon">
+                        <div class="class-tier-badge">T1</div>
+                    <h3>Healer</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tier-section">
+                <h2>Classes Tier 2</h2>
+                <div class="tier-description">
+                    <p>As classes T2 oferecem especializações mais avançadas com habilidades poderosas. São evoluções das classes T1 com maiores capacidades.</p>
+                </div>
+                <div class="class-selector-grid">
+                    <div class="class-card" data-class="warrior">
+                    <img src="../images/class_icon_placeholder.png" alt="Warrior Icon" class="class-icon">
+                        <div class="class-tier-badge">T2</div>
+                    <h3>Warrior</h3>
+                        <p><small>Evolução do Fighter</small></p>
+                    </div>
+                    <div class="class-card" data-class="wizard">
+                    <img src="../wiki/Imagens/classes/mago_t2.png" alt="Wizard Icon" class="class-icon">
+                        <div class="class-tier-badge">T2</div>
+                    <h3>Wizard</h3>
+                        <p><small>Evolução do Mago</small></p>
+                    </div>
+                    <div class="class-card" data-class="explorador">
+                    <img src="../wiki/Imagens/classes/arqueiro_t2.png" alt="Explorador Icon" class="class-icon">
+                        <div class="class-tier-badge">T2</div>
+                    <h3>Explorador</h3>
+                        <p><small>Evolução do Arqueiro</small></p>
+                    </div>
+                    <div class="class-card" data-class="clerigo">
+                    <img src="../wiki/Imagens/classes/curandeiro_t2.png" alt="Clerigo Icon" class="class-icon">
+                        <div class="class-tier-badge">T2</div>
+                    <h3>Clérigo</h3>
+                        <p><small>Evolução do Healer</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detalhes das classes (inicialmente ocultos) -->
+            <!-- RECRUTA -->
+            <div id="recruta-details" class="class-details">
+                <h2>Recruta - Classe Inicial</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>2/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 20%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>O Recruta é equilibrado, capaz de usar uma variedade de armas básicas e armaduras leves. Seu estilo de jogo é focado em aprender os fundamentos do combate, exploração e interação com o mundo. É uma classe ideal para experimentar diferentes abordagens antes de se especializar.</p>
+                            <p><strong>Pontos Fortes:</strong> Adaptabilidade, facilidade de aprendizado.</p>
+                            <p><strong>Pontos Fracos:</strong> Menor potencial de dano e especialização comparado às classes avançadas.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Recruta é a classe inicial com a qual todos os jogadores começam sua jornada em Grind Hero. Oferece uma experiência balanceada e versátil, permitindo que o jogador experimente diferentes estilos de jogo antes de escolher uma especialização.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Golpe Básico</h4>
+                                <div class="ability-description">Um ataque simples que causa dano físico moderado. Baixo consumo de energia.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Postura Defensiva</h4>
+                                <div class="ability-description">Aumenta temporariamente a defesa do personagem, reduzindo o dano recebido por 5 segundos.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Determinação do Recruta</h4>
+                                <div class="ability-description">Habilidade passiva que aumenta ligeiramente a taxa de ganho de experiência.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <!-- FIGHTER -->
+            <div id="fighter-details" class="class-details">
+                <h2>Fighter - Especialista em Combate Corpo a Corpo</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>7/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 70%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>4/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 40%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>2/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 20%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>6/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 60%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>1/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 10%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>Fighters se destacam no combate direto, utilizando uma combinação de ataques poderosos e defesa sólida com escudo. Eles são ideais para jogadores que gostam de estar no centro da batalha, controlando o fluxo do combate e protegendo aliados.</p>
+                            <p><strong>Mecânica Única:</strong> Altamente dependente de treino tanto para ataque quanto defesa. No início, inimigos podem facilmente bloquear seus golpes ou causar dano significativo, mas possuem velocidade de ataque superior para compensar. O treino de defesa amplifica os benefícios do escudo (ou da arma, se não estiver usando escudo). É a classe que ganha mais HP ao subir de nível, tornando-se extremamente resistente com o tempo.</p>
+                            <p><strong>Pontos Fortes:</strong> Alta capacidade de sobrevivência, bom dano single-target, proficiência com escudos, maior ganho de HP por nível.</p>
+                            <p><strong>Pontos Fracos:</strong> Mobilidade limitada, fraco nos níveis iniciais antes do treino adequado, pode ter dificuldade contra múltiplos inimigos ágeis ou à distância sem o devido posicionamento.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Fighter é especialista em combate corpo a corpo, focando em força bruta e resistência. Com alta capacidade de dano e defesa, é perfeito para jogadores que preferem estar na linha de frente da batalha.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Combo de Socos</h4>
+                                <div class="ability-description">Uma sequência de golpes rápidos que causam dano físico crescente. O último golpe causa dano crítico.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Postura do Tigre</h4>
+                                <div class="ability-description">Aumenta temporariamente a força e velocidade de ataque por 8 segundos.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Resiliência do Lutador</h4>
+                                <div class="ability-description">Habilidade passiva que aumenta a resistência a dano físico e reduz o tempo de recuperação após ser nocauteado.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <!-- MAGO -->
+            <div id="mago-details" class="class-details">
+                <h2>Mago - Manipulador dos Elementos</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>1/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 10%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>8/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 80%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>2/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 20%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>4/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 40%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>Magos preferem manter distância dos inimigos, utilizando seu vasto arsenal de feitiços para controlar o campo de batalha e eliminar alvos. Seu dano mágico ignora defesas convencionais, tornando-os eficazes contra inimigos com alta armadura.</p>
+                            <p><strong>Mecânica Única:</strong> Parece inicialmente poderoso, pois seu dano mágico não é bloqueado por escudos ou armaduras, permitindo danos consistentes mesmo com baixo treino. No entanto, o constante consumo de mana (inclusive nos ataques básicos) exige gerenciamento cuidadoso de recursos. Possui alcance médio (mid-range), exigindo movimentação constante para evitar perigo. Tem maior dificuldade para treinar defesa e usa grimórios no lugar de escudos, que são mais raros e oferecem menor proteção.</p>
+                            <p><strong>Pontos Fortes:</strong> Alto dano mágico, capacidade de dano em área (AoE), ignora defesas físicas, eficaz desde os níveis iniciais.</p>
+                            <p><strong>Pontos Fracos:</strong> Baixa defesa física e HP, alto consumo de mana, ataques básicos consomem mana, alcance não muito longo, dependência de grimórios raros.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Mago domina os elementos arcanos, causando dano mágico devastador à distância. Com baixa defesa física mas alto poder mágico, é ideal para jogadores que preferem estratégias de combate à distância.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Rajada Arcana</h4>
+                                <div class="ability-description">Dispara um projétil de energia mágica que causa dano médio e tem chance de atordoar o alvo.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Escudo Mágico</h4>
+                                <div class="ability-description">Cria uma barreira que absorve dano mágico e físico por 6 segundos.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Afinidade Elemental</h4>
+                                <div class="ability-description">Habilidade passiva que aumenta o dano causado por magias elementais e reduz o custo de mana dessas habilidades.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <!-- ARQUEIRO -->
+            <div id="arqueiro-details" class="class-details">
+                <h2>Arqueiro - Mestre do Combate à Distância</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>8/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 80%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>4/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 40%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>2/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 20%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>Arqueiros são mestres do combate à distância, preferindo manter-se afastados da linha de frente. São capazes de causar dano consistente e preciso a alvos específicos. Seu potencial de dano aumenta quando posicionados corretamente.</p>
+                            <p><strong>Mecânica Única:</strong> Sem treino, o arqueiro tem baixa precisão (10-40% de chance de acerto), dependendo da distância do alvo. Com treino adequado, pode atingir até 90% de chance de acerto em qualquer distância, e arcos superiores podem ultrapassar esse limite. As magias que consomem mana não erram, proporcionando uma alternativa confiável nos níveis iniciais.</p>
+                            <p><strong>Pontos Fortes:</strong> Alto dano à distância, mobilidade, dano crítico, e habilidades de controle.</p>
+                            <p><strong>Pontos Fracos:</strong> Baixa resistência, vulnerabilidade em combate corpo-a-corpo, dependente de posicionamento e treino para precisão.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Arqueiro é o mestre do combate à distância, utilizando sua precisão e agilidade para eliminar inimigos antes mesmo que se aproximem. Especialista em esquiva e posicionamento estratégico.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Disparo Certeiro</h4>
+                                <div class="ability-description">Um tiro preciso que causa dano extra e tem chance aumentada de acerto crítico.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Chuva de Flechas</h4>
+                                <div class="ability-description">Ataque em área que lança múltiplas flechas, causando dano a todos os inimigos em um raio de 5 metros.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Posicionamento Perfeito</h4>
+                                <div class="ability-description">Habilidade passiva que aumenta a chance de esquiva e reduz o tempo de recarga de habilidades de movimento.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <!-- HEALER -->
+            <div id="healer-details" class="class-details">
+                <h2>Healer - Guardião da Vida</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>1/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 10%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>7/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 70%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>9/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 90%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>Healers focam em manter seus aliados vivos e fortalecidos. Eles geralmente ficam na retaguarda, gerenciando a saúde do grupo e utilizando feitiços de suporte para virar o jogo. Seu dano ofensivo é limitado, mas sua capacidade de sustentação é incomparável.</p>
+                            <p><strong>Mecânica Única:</strong> Compartilha as mesmas mecânicas de ataque e defesa dos magos, incluindo o consumo de mana nos ataques básicos. Dispõe de poucas magias ofensivas mas muitas de cura e buff, exigindo uso estratégico dos cooldowns para não ficar sem combo ofensivo em momentos críticos. A grande quantidade de magias de cura o torna um excelente sobrevivente, capaz de escapar de diversos perigos maiores.</p>
+                            <p><strong>Pontos Fortes:</strong> Alta capacidade de cura (single-target e AoE), buffs de suporte, sobrevivência excepcional, essencial para grupos.</p>
+                            <p><strong>Pontos Fracos:</strong> Baixo dano ofensivo, vulnerável se focado por inimigos, alto consumo de mana, dependente de gerenciamento adequado de cooldowns.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Healer é especialista em manter seus aliados vivos e fortes durante o combate. Com poderosas habilidades de cura e suporte, é indispensável em grupos que enfrentam desafios difíceis.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Toque Curativo</h4>
+                                <div class="ability-description">Cura um único alvo, restaurando uma quantidade significativa de pontos de vida.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Aura de Regeneração</h4>
+                                <div class="ability-description">Cria uma aura que cura gradualmente todos os aliados dentro de seu raio de ação por 8 segundos.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Bênção da Vida</h4>
+                                <div class="ability-description">Habilidade passiva que aumenta a eficácia de todas as curas em 15% e reduz o custo de mana dessas habilidades.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <!-- WARRIOR -->
+            <div id="warrior-details" class="class-details">
+                <h2>Warrior - Campeão da Batalha</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>9/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 90%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>4/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 40%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>2/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 20%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>8/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 80%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>Warriors são dominantes e implacáveis no campo de batalha. A evolução natural do Fighter, agora com capacidade expandida de tankar dano e liderar o grupo em combate. Podem absorver grandes quantidades de dano enquanto protegem aliados menos resistentes.</p>
+                            <p><strong>Pontos Fortes:</strong> Extrema resistência a dano, capacidade de "tankar", controle de área com provocações e intimidações, dano consistente.</p>
+                            <p><strong>Pontos Fracos:</strong> Mobilidade reduzida devido ao equipamento pesado, vulnerabilidade a magias específicas, limitado contra alvos à distância.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Warrior é a evolução natural do Fighter, um verdadeiro tanque em combate. Especializado em armas pesadas e armaduras robustas, pode suportar grandes quantidades de dano enquanto protege seus aliados.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Golpe Devastador</h4>
+                                <div class="ability-description">Um ataque poderoso que causa dano massivo e tem chance de atordoar o alvo por 2 segundos.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Barreira Intransponível</h4>
+                                <div class="ability-description">Levanta o escudo, bloqueando todo o dano frontal por 4 segundos e refletindo 20% do dano de volta para os atacantes.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Força Inabalável</h4>
+                                <div class="ability-description">Habilidade passiva que reduz a chance de ser atordoado ou derrubado em 50% e aumenta a regeneração de vida em situações críticas.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <!-- WIZARD -->
+            <div id="wizard-details" class="class-details">
+                <h2>Wizard - Arcano Supremo</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>1/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 10%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>10/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 100%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>2/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 20%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>5/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 50%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>Wizards são mestres absolutos das artes arcanas, representando o pináculo do poder mágico. Evoluídos do Mago, dominam elementos avançados e combinações de magias para efeitos devastadores. Seu estilo de jogo é complexo e requer planejamento estratégico.</p>
+                            <p><strong>Pontos Fortes:</strong> O maior potencial de dano mágico do jogo, magias de área potentes, habilidades de controle de multidões avançadas, manipulação de tempo/espaço.</p>
+                            <p><strong>Pontos Fracos:</strong> Extremamente frágil em combate corpo a corpo, alto consumo de mana, conjurações lengas para magias poderosas que podem ser interrompidas.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Wizard é a evolução do Mago, um mestre absoluto nas artes arcanas. Capaz de manipular elementos avançados e combinar magias para efeitos devastadores, poucos inimigos podem resistir a seu poder.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Explosão Arcana</h4>
+                                <div class="ability-description">Libera uma explosão mágica concentrada que causa enorme dano em área e deixa um campo de energia residual que causa dano ao longo do tempo.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Dobra Temporal</h4>
+                                <div class="ability-description">Manipula o tempo ao redor do Wizard, aumentando drasticamente sua velocidade de conjuração e movimento por 5 segundos.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Maestria Elemental</h4>
+                                <div class="ability-description">Habilidade passiva que permite ao Wizard fundir diferentes elementos em suas magias, criando efeitos únicos e mais poderosos.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <!-- EXPLORADOR -->
+            <div id="explorador-details" class="class-details">
+                <h2>Explorador - Mestre dos Caminhos</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>4/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 40%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>9/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 90%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>6/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 60%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>5/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 50%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>Exploradores combinam a precisão do arqueiro com um arsenal de armadilhas e flechas imbuídas de efeitos diversos. Eles são adeptos em preparar o campo de batalha, enfraquecer inimigos e explorar suas vulnerabilidades, mantendo-se sempre um passo à frente.</p>
+                            <p><strong>Pontos Fortes:</strong> Grande versatilidade tática, controle de área com armadilhas, capacidade de aplicar diversos status negativos, bom dano elemental.</p>
+                            <p><strong>Pontos Fracos:</strong> Dano direto pode ser menor que outras classes focadas em puro DPS, dependência de preparação e recursos (armadilhas, flechas especiais).</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Explorador é a evolução do Arqueiro, combinando habilidades de rastreamento com técnicas avançadas de combate à distância. Especialista em encontrar tesouros escondidos e recursos raros, é também letal quando se trata de emboscar inimigos.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Tiro Penetrante</h4>
+                                <div class="ability-description">Dispara uma flecha que atravessa múltiplos inimigos, causando dano a todos em linha reta e ignorando parte da armadura.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Olho do Falcão</h4>
+                                <div class="ability-description">Aumenta drasticamente o alcance de visão e a precisão por 15 segundos, revelando inimigos escondidos e pontos fracos.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Conhecedor da Natureza</h4>
+                                <div class="ability-description">Habilidade passiva que aumenta a chance de encontrar itens raros durante a exploração e permite detectar armadilhas e inimigos escondidos.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <!-- CLÉRIGO -->
+            <div id="clerigo-details" class="class-details">
+                <h2>Clérigo - Emissário Divino</h2>
+                <div class="class-info-grid">
+                    <div>
+                        <div class="class-stats">
+                            <h3>Atributos</h3>
+                            <div class="stat-name"><span>Força</span><span>3/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                            
+                            <div class="stat-name"><span>Agilidade</span><span>2/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 20%;"></div></div>
+                            
+                            <div class="stat-name"><span>Inteligência</span><span>8/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 80%;"></div></div>
+                            
+                            <div class="stat-name"><span>Defesa</span><span>5/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 50%;"></div></div>
+                            
+                            <div class="stat-name"><span>Suporte</span><span>10/10</span></div>
+                            <div class="stat-bar"><div class="stat-bar-fill" style="width: 100%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background-color: rgba(204, 0, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--color-red-primary);">
+                            <h3 style="margin-top: 0;">Estilo de Jogo</h3>
+                            <p>Clérigos são versáteis, capazes de se adaptar às necessidades do grupo. Podem focar em cura intensiva, fornecer buffs defensivos e ofensivos, ou até mesmo entrar em combate direto usando poder sagrado contra mortos-vivos e criaturas profanas.</p>
+                            <p><strong>Pontos Fortes:</strong> Cura superior (single-target e AoE), buffs de grupo poderosos, dano sagrado efetivo contra certos tipos de inimigos, boa capacidade de sobrevivência com armaduras médias/pesadas.</p>
+                            <p><strong>Pontos Fracos:</strong> Dano ofensivo geral pode ser menor que classes focadas em DPS, ainda dependente de mana para a maioria das habilidades.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>O Clérigo é a evolução do Healer, um canal direto para poderes divinos. Além de curas poderosas, pode invocar proteções sagradas e até mesmo punir inimigos com luz divina.</p>
+                        
+                        <div class="class-abilities">
+                            <h3>Habilidades</h3>
+                            <div class="ability-card">
+                                <h4>Restauração Divina</h4>
+                                <div class="ability-description">Uma poderosa cura em área que restaura uma grande quantidade de vida a todos os aliados e remove efeitos negativos.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Sentença Sagrada</h4>
+                                <div class="ability-description">Invoca um raio de luz divina que causa dano massivo a inimigos sombrios e tem chance de atordoá-los.</div>
+                            </div>
+                            <div class="ability-card">
+                                <h4>Proteção Celestial</h4>
+                                <div class="ability-description">Habilidade passiva que concede a todos os aliados próximos uma pequena regeneração de vida contínua e resistência a efeitos de controle.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-details">Fechar</button>
+            </div>
+
+            <div class="wiki-feedback-section">
+                <p>Esta página foi útil?</p>
+                <button class="feedback-yes">Sim</button>
+                <button class="feedback-no">Não</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="wiki-ui-controls">
+        <button id="theme-toggle-button">Mudar Tema</button>
+        <button id="font-increase-button">A+</button>
+        <button id="font-decrease-button">A-</button>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../images/red-skull-logo.png" alt="RED SKULL">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../about.html">Sobre</a></li>
+                    <li><a href="../join.html">Recrutamento</a></li>
+                    <li><a href="wiki_index.html">Wiki</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#" target="_blank" class="social-link discord-link">Discord</a>
+                <a href="#" target="_blank" class="social-link youtube-link">YouTube</a>
+                <a href="#" target="_blank" class="social-link twitter-link">Twitter</a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 RED SKULL. Todos os direitos reservados. Jogo Grind Hero por Kahdymus.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/animations.js" defer></script>
+    <script src="js/wiki_interactive.js" defer></script>
+    <script src="../js/ux-improvements.js" defer></script>
+    <script src="../js/mobile-menu.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Seletor para todos os cards de classes
+            const classCards = document.querySelectorAll('.class-card');
+            const closeButtons = document.querySelectorAll('.close-details');
+            
+            // Adicionar event listener para cada card
+            classCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Obter o nome da classe a partir do atributo data-class
+                    const className = this.getAttribute('data-class');
+                    
+                    // Esconder todos os detalhes de classe
+                    document.querySelectorAll('.class-details').forEach(details => {
+                        details.classList.remove('active');
+                    });
+                    
+                    // Mostrar os detalhes da classe selecionada
+                    const classDetails = document.getElementById(`${className}-details`);
+                    if (classDetails) {
+                        classDetails.classList.add('active');
+                        // Scroll suave até os detalhes
+                        classDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        // Fallback para classes sem detalhes implementados ainda
+                        alert(`Detalhes para a classe ${className} serão adicionados em breve!`);
+                    }
+                });
+            });
+            
+            // Adicionar event listener para botões de fechar
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const detailsSection = this.closest('.class-details');
+                    detailsSection.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+

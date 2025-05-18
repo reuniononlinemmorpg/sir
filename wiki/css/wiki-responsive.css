@@ -1,0 +1,243 @@
+/* Wiki Grind Hero - Arquivo de responsividade específico */
+
+/* === Large Screens (1200px and below) === */
+@media screen and (max-width: 1200px) {
+    #wiki-container {
+        padding: 0 15px;
+        max-width: 100%;
+    }
+    
+    .preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #wiki-main-content h1, 
+    #wiki-main-content .page-title {
+        font-size: 3.8rem;
+    }
+}
+
+/* === Medium Screens (992px and below) === */
+@media screen and (max-width: 992px) {
+    #wiki-container {
+        flex-direction: column;
+        padding-top: 80px;
+    }
+    
+    #wiki-sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-bottom: 20px;
+        order: 2;
+    }
+    
+    #wiki-main-content {
+        order: 1;
+        padding: 30px;
+    }
+    
+    #wiki-main-content h1, 
+    #wiki-main-content .page-title {
+        font-size: 3.2rem;
+    }
+    
+    .countdown-value {
+        font-size: 2rem;
+        width: 70px;
+    }
+    
+    .wiki-ui-controls {
+        justify-content: center;
+    }
+    
+    .wiki-hero-section {
+        height: auto;
+        min-height: 300px;
+    }
+}
+
+/* === Small Screens (768px and below) === */
+@media screen and (max-width: 768px) {
+    #wiki-main-content {
+        padding: 25px;
+    }
+    
+    .preview-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .wiki-search-form {
+        flex-direction: column;
+    }
+    
+    #wiki-search-bar {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    
+    #wiki-search-button {
+        width: 100%;
+        border-radius: 8px;
+        border-left: 2px solid var(--wiki-border-color);
+    }
+    
+    .countdown-unit {
+        min-width: 60px;
+    }
+    
+    /* Menu mobile aprimorado */
+    .menu-toggle {
+        z-index: 1100; /* Garantir que fique acima do menu */
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95); /* Fundo com transparência */
+        backdrop-filter: blur(5px); /* Efeito de desfoque */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1050;
+        transition: right 0.4s ease;
+        padding: 80px 20px 20px; /* Espaço para o header fixo */
+        overflow-y: auto;
+    }
+    
+    .menu-open .nav-links {
+        right: 0;
+    }
+    
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.8rem;
+        padding: 15px;
+        display: block;
+        width: 100%;
+    }
+    
+    /* Ajustes para o footer */
+    .footer-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* === Extra Small Screens (576px and below) === */
+@media screen and (max-width: 576px) {
+    #wiki-sidebar h2 {
+        font-size: 1.8rem;
+    }
+    
+    #wiki-sidebar nav ul li a {
+        font-size: 1.2rem;
+        padding: 10px 15px;
+    }
+    
+    #wiki-main-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    #wiki-main-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    #wiki-main-content p, 
+    #wiki-main-content ul li,
+    #wiki-main-content ol li {
+        font-size: 1.1rem;
+    }
+    
+    .countdown-unit {
+        min-width: 50px;
+    }
+    
+    .countdown-value {
+        font-size: 1.5rem;
+        width: 50px;
+        padding: 5px 3px;
+    }
+    
+    .discord-button {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+    
+    .wiki-feedback-section button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    /* Ajustes para o footer */
+    .footer-columns {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-column {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* === Altura Baixa (para notebooks/telas pequenas) === */
+@media screen and (max-height: 700px) {
+    .wiki-hero-section {
+        height: auto;
+        min-height: 250px;
+    }
+    
+    #wiki-main-content h1, 
+    #wiki-main-content .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    #countdown-timer {
+        margin-top: 15px;
+    }
+}
+
+/* === Melhorias de acessibilidade === */
+@media (prefers-reduced-motion: reduce) {
+    .preview-card,
+    .countdown-unit,
+    .discord-button,
+    .wiki-feedback-section button {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .preview-card:hover {
+        transform: none !important;
+    }
+}
+
+/* === Skip link para acessibilidade === */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-red-primary);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}

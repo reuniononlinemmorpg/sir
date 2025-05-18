@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigils | Wiki Grind Hero | RED SKULL</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/wiki.css">
+    <link rel="stylesheet" href="../wiki/css/wiki-responsive.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para a página de Sigils */
+        .sigil-card {
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sigil-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(204, 0, 0, 0.15);
+        }
+
+        .sigil-card img.sigil-icon {
+            width: 80px;
+            /* Ajustar tamanho */
+            height: 80px;
+            border-radius: 8px;
+            object-fit: contain;
+            /* Para ícones que não são quadrados */
+            background-color: var(--color-grey-dark);
+            /* Placeholder */
+        }
+
+        .sigil-info h3 {
+            color: var(--wiki-subheading-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .sigil-info p {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .sigil-upgrade-info {
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .sigil-info-container {
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .sigil-shop-info h2 {
+            margin-top: 0;
+        }
+
+        .sigil-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .sigil-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            border: 2px solid var(--wiki-border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .sigil-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .main-footer {
+            background-color: #a09898;
+            color: #ccc;
+            padding: 20px 15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #b41212;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff0000;
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Responsivo para dispositivos menores */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-logo {
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Sempre mostrar o botão do menu */
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Ícone do menu hambúrguer */
+        .sword-icon::before {
+            content: '☰';
+            font-size: 28px;
+        }
+
+        /* Ocultar o menu por padrão */
+        .main-nav .nav-links {
+            display: none;
+            flex-direction: column;
+            background-color: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            padding: 10px;
+            z-index: 1000;
+            border: 1px solid #333;
+        }
+
+        /* Mostrar o menu quando ativo */
+        .main-nav .nav-links.active {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body class="preload wiki-page-body">
+    <div id="preloader">
+        <div class="skull-loader"><img src="../images/red-skull-logo.png" alt="RED SKULL">
+            <div class="loading-text">Preparando para a batalha...</div>
+        </div>
+    </div>
+    <header id="main-header" class="sticky">
+        <div class="header-container">
+            <div class="logo-container"><a href="../index.html" class="logo"><img src="../images/red-skull-logo.png"
+                        alt="RED SKULL Logo"></a>
+                <div class="tagline"><span class="main-tagline">RED SKULL</span><span class="sub-tagline">A Elite de
+                        Grind Hero</span></div>
+            </div>
+            <nav class="main-nav"><button class="menu-toggle" aria-label="Abrir Menu"><span
+                        class="sword-icon"></span></button>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../about.html">Sobre</a></li>
+                    <li><a href="../join.html">Recrutamento</a></li>
+                    <li><a href="../achievements.html">Mural de Glórias</a></li>
+                    <li><a href="../community.html">Comunidade</a></li>
+                    <li><a href="wiki_index.html" class="active">Wiki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="wiki-container">
+        <aside id="wiki-sidebar">
+            <h2>Navegação da Wiki</h2>
+            <nav>
+                <ul>
+                    <li><a href="wiki_index.html">Página Inicial</a></li>
+                    <li class="sidebar-category">Básico do Jogo</li>
+                    <li><a href="introducao.html">Introdução</a></li>
+                    <li><a href="mecanicas_principais.html">Mecânicas Principais</a></li>
+                    <li><a href="jogabilidade.html">Jogabilidade</a></li>
+                    <li><a href="servidores.html">Servidores</a></li>
+                    <li><a href="dicas_tutoriais.html">Dicas e Tutoriais</a></li>
+                    <li class="sidebar-category">Classes e Treinamento</li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="treinamento_status.html">Treinamento e Status</a></li>
+                    <li class="sidebar-category">Conteúdo do Jogo</li>
+                    <li><a href="mapas.html">Mapas e Regiões</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                    <li><a href="quests_cacadas.html">Quests e Caçadas</a></li>
+                    <li><a href="sigils.html" class="active-wiki-link">Sigils</a></li>
+                    <li><a href="mobs.html">Monstros</a></li>
+                    <li class="sidebar-category">Aspectos Sociais</li>
+                    <li><a href="guildas.html">Guildas</a></li>
+                    <li><a href="pvp.html">PvP</a></li>
+                    <li><a href="em_desenvolvimento.html">Em Desenvolvimento</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section id="wiki-main-content">
+            <div class="breadcrumb"><a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt;
+                <span>Sigils</span>
+            </div>
+
+            <!-- Busca e navegação rápida -->
+            <div class="wiki-search-bar-container">
+                <form class="wiki-search-form" action="search-results.html" method="get">
+                    <input type="text" id="wiki-search-bar" name="q" placeholder="Buscar na wiki..." autocomplete="off">
+                    <button type="submit" id="wiki-search-button">Buscar</button>
+                </form>
+            </div>
+
+
+            <div class="sigil-info-container">
+                <h1 class="page-title">Sistema de Sigils</h1>
+                <p>Os Sigils são uma moeda especial em Grind Hero, obtida principalmente através da conclusão de <a
+                        href="quests_cacadas.html">Caçadas Diárias</a>. Eles são utilizados para adquirir itens
+                    poderosos e exclusivos na Loja de Sigils.</p>
+            </div>
+            <div class="sigil-info-container">
+
+                <h2>Obtendo Sigils</h2>
+                <p>A principal forma de obter Sigils é completando as Caçadas Diárias. Cada caçada concluída recompensa
+                    o jogador com uma quantidade específica de Sigils, além de experiência e outros itens. Eventos
+                    especiais também podem oferecer Sigils como recompensa.</p>
+
+
+                <div class="sigil-gallery">
+                    <img src="./Imagens/Sigils/tabela_sigils.png" alt="Sigil Icon" class="sigil-icon"
+                        style="width: 100%; max-width: 800px; margin: 20px auto; display: block;">
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/Agressão.png" alt="Sigil da Agressão" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil da Agressão</h3>
+                    <p><strong>Descrição:</strong> Causa um aumento nos ataques desferidos, tanto físico quando mágico.
+                    </p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/Drenar_Mana.png" alt="Sigil da Drenar Mana" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil de Drenar Mana</h3>
+                    <p><strong>Descrição:</strong> Seus ataques drenam uma quantia de pontos de mana de seu oponente
+                        para o seus próprios pontos de mana.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/Sigils/drenar_vida.png" alt="Sigil da Drenar Vida" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil de Drenar Vida</h3>
+                    <p><strong>Descrição:</strong> Seus ataques drenam uma quantia de pontos de vida de seu oponente
+                        para o seus próprios pontos de vida.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/esquiva.png" alt="Sigil da Esquiva" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil da Esquiva</h3>
+                    <p><strong>Descrição:</strong> Obtém a chance de se esquivar de ataques inimigos.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/ganancia.png" alt="Sigil da Ganância" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil da Ganância</h3>
+                    <p><strong>Descrição:</strong> descrição em breve.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/protecao.png" alt="Sigil da Proteção" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil da Proteção</h3>
+                    <p><strong>Descrição:</strong> descrição em breve.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/refletir.png" alt="Sigil da Refletir" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil da Refletir</h3>
+                    <p><strong>Descrição:</strong> descrição em breve.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/sorte.png" alt="Sigil da Sorte" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil da Sorte</h3>
+                    <p><strong>Descrição:</strong> descrição em breve.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/velocidade.png" alt="Sigil da Velocidade" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil da Velocidade</h3>
+                    <p><strong>Descrição:</strong> Causa um aumento na velocidade de movimento do personagem.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+            <div class="sigil-card">
+                <img src="./Imagens/sigils/vida.png" alt="Sigil da Vida" class="sigil-icon">
+                <div class="sigil-info">
+                    <h3>Sigil da Vida</h3>
+                    <p><strong>Descrição:</strong> Causa um aumento nos pontos de vida do personagem.</p>
+                    <p><strong>Utilidade:</strong> Moeda para a Loja de Sigils.</p>
+                </div>
+            </div>
+
+
+            <div class="sigil-info-container">
+                <h1>Melhorar Sigils</h1>
+                <h2>Para melhorar seus Sigils</h2>
+                <ul>
+                    <li>Você pode usar as moedas antigas que você ganha da caçada diaria</li>
+                    <li>Cada sigil pode ser melhorado até 5 estrelas </li>
+                    <li><strong>Mais informações em breve:</strong> mais informações em breve</li>
+                </ul>
+            </div>
+            </div>
+
+            <div class="sigil-info-container">
+                <h2>Estratégias para Acumular Sigils</h2>
+                <ul>
+                    <li><strong>Complete todas as Caçadas Diárias:</strong> Esta é a fonte mais consistente de Sigils.
+                    </li>
+                    <li><strong>Participe de Eventos:</strong> Fique atento a eventos que ofereçam Sigils como
+                        recompensa.</li>
+                    <li><strong>Planeje seus Gastos:</strong> Alguns itens na Loja de Sigils são muito caros. Decida
+                        quais são suas prioridades.</li>
+                </ul>
+            </div>
+
+            <div class="wiki-feedback-section">
+                <p>Esta página foi útil?</p>
+                <button class="feedback-yes">Sim</button>
+                <button class="feedback-no">Não</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="wiki-ui-controls"><button id="font-increase-button">A+</button><button
+            id="font-decrease-button">A-</button></div>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../images/red-skull-logo.png" alt="Logo RED SKULL">
+            </div>
+            <div class="footer-links">
+                <a href="../index.html">Início</a>
+                <a href="../about.html">Sobre</a>
+                <a href="../join.html">Recrutamento</a>
+                <a href="../community.html">Comunidade</a>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2025 RED SKULL - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/animations.js" defer></script>
+    <script src="js/wiki_interactive.js" defer></script>
+    <script src="../js/ux-improvements.js" defer></script>
+    <script src="../js/mobile-menu.js" defer></script>
+</body>
+
+</html>

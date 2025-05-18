@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOME_DA_PÁGINA | Wiki Grind Hero</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/wiki.css">
+    <link rel="stylesheet" href="../wiki/css/wiki-responsive.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</head>
+<body class="preload wiki-page-body">
+    <div id="preloader">
+        <div class="skull-loader">
+            <img src="../images/red-skull-logo.png" alt="RED SKULL">
+            <div class="loading-text">Preparando para a batalha...</div>
+        </div>
+    </div>
+
+    <header id="main-header" class="sticky">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="../index.html" class="logo">
+                    <img src="../images/red-skull-logo.png" alt="RED SKULL Logo">
+                </a>
+                <div class="tagline">
+                    <span class="main-tagline">RED SKULL</span>
+                    <span class="sub-tagline">A Elite de Grind Hero</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span class="sword-icon"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../about.html">Sobre</a></li>
+                    <li><a href="../join.html">Recrutamento</a></li>
+                    <li><a href="../achievements.html">Mural de Glórias</a></li>
+                    <li><a href="../community.html">Comunidade</a></li>
+                    <li><a href="wiki_index.html" class="active">Wiki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="wiki-container">
+        <aside id="wiki-sidebar">
+            <h2>Navegação da Wiki</h2>
+            <nav>
+                <ul>
+                    <li><a href="wiki_index.html">Página Inicial</a></li>
+                    <li class="sidebar-category">Básico do Jogo</li>
+                    <li><a href="introducao.html">Introdução</a></li>
+                    <li><a href="mecanicas_principais.html">Mecânicas Principais</a></li>
+                    <li><a href="jogabilidade.html">Jogabilidade</a></li>
+                    <li><a href="servidores.html">Servidores</a></li>
+                    <li><a href="dicas_tutoriais.html">Dicas e Tutoriais</a></li>
+                    <li class="sidebar-category">Classes e Treinamento</li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="treinamento_status.html">Treinamento e Status</a></li>
+                    <li class="sidebar-category">Conteúdo do Jogo</li>
+                    <li><a href="mapas.html">Mapas e Regiões</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                    <li><a href="quests_cacadas.html">Quests e Caçadas</a></li>
+                    <li><a href="sigils.html">Sigils</a></li>
+                    <li><a href="mobs.html">Monstros</a></li>
+                    <li class="sidebar-category">Aspectos Sociais</li>
+                    <li><a href="guildas.html">Guildas</a></li>
+                    <li><a href="pvp.html">PvP</a></li>
+                    <li><a href="em_desenvolvimento.html">Em Desenvolvimento</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section id="wiki-main-content">
+            <div class="breadcrumb">
+                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>NOME_DA_PÁGINA</span>
+            </div>
+
+            <h1 class="page-title">TÍTULO_DA_PÁGINA</h1>
+
+            <div class="wiki-search-bar-container">
+                <input type="search" id="wiki-search-bar" placeholder="Buscar na wiki...">
+                <button id="wiki-search-button">Buscar</button>
+                <div id="wiki-search-suggestions"></div>
+            </div>
+
+            <!-- CONTEÚDO ESPECÍFICO DA PÁGINA AQUI -->
+            
+            <div class="wiki-feedback-section">
+                <p>Esta página foi útil?</p>
+                <button class="feedback-yes">Sim</button>
+                <button class="feedback-no">Não</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="wiki-ui-controls">        
+        <button id="font-increase-button">A+</button>
+        <button id="font-decrease-button">A-</button>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../images/red-skull-logo.png" alt="RED SKULL">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../about.html">Sobre</a></li>
+                    <li><a href="../join.html">Recrutamento</a></li>
+                    <li><a href="wiki_index.html">Wiki</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#" target="_blank" class="social-link discord-link">Discord</a>
+                <a href="#" target="_blank" class="social-link youtube-link">YouTube</a>
+                <a href="#" target="_blank" class="social-link twitter-link">Twitter</a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 RED SKULL. Todos os direitos reservados. Jogo Grind Hero por Kahdymus.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/animations.js" defer></script>
+    <script src="js/wiki_interactive.js" defer></script>
+    <script src="../js/ux-improvements.js" defer></script>
+    <script src="../js/mobile-menu.js" defer></script>
+</body>
+</html> 

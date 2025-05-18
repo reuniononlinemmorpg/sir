@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Em Desenvolvimento | Wiki Grind Hero | RED SKULL</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/wiki.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        .teaser-section, .pvp-section, .future-content-section {
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .teaser-section:hover, .pvp-section:hover, .future-content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(204, 0, 0, 0.15);
+        }
+        .teaser-section h3, .pvp-section h3, .future-content-section h3 {
+            color: var(--wiki-subheading-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--wiki-border-color-highlight);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: var(--wiki-input-bg);
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            width: 0%; /* Será definido por JS */
+            height: 25px;
+            background-color: var(--color-red-primary);
+            text-align: center;
+            line-height: 25px;
+            color: white;
+            font-weight: bold;
+            transition: width 1s ease-in-out;
+        }
+        .teaser-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .teaser-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            border: 2px solid var(--wiki-border-color);
+            transition: transform 0.3s ease;
+        }
+        .teaser-gallery img:hover {
+            transform: scale(1.05);
+        }
+        .pvp-modes li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .pvp-modes li::before {
+            content: "⚔️"; /* Ícone de espadas cruzadas */
+            position: absolute;
+            left: 0;
+            color: var(--color-red-primary);
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--wiki-text-color-muted);
+            cursor: help;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 250px;
+            background-color: var(--color-black-primary);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            border: 1px solid var(--color-red-primary);
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--color-red-primary) transparent transparent transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="preload wiki-page-body">
+    <div id="preloader"><div class="skull-loader"><img src="../images/red-skull-logo.png" alt="RED SKULL"><div class="loading-text">Preparando para a batalha...</div></div></div>
+    <header id="main-header" class="sticky">
+        <div class="header-container">
+            <div class="logo-container"><a href="../index.html" class="logo"><img src="../images/red-skull-logo.png" alt="RED SKULL Logo"></a><div class="tagline"><span class="main-tagline">RED SKULL</span><span class="sub-tagline">A Elite de Grind Hero</span></div></div>
+            <nav class="main-nav"><button class="menu-toggle" aria-label="Abrir Menu"><span class="sword-icon"></span></button><ul class="nav-links"><li><a href="../index.html">Início</a></li><li><a href="../about.html">Sobre</a></li><li><a href="../join.html">Recrutamento</a></li><li><a href="../achievements.html">Mural de Glórias</a></li><li><a href="../community.html">Comunidade</a></li><li><a href="wiki_index.html" class="active">Wiki</a></li></ul></nav>
+        </div>
+    </header>
+
+    <main id="wiki-container">
+        <aside id="wiki-sidebar">
+            <h2>Navegação da Wiki</h2>
+            <nav>
+                <ul>
+                    <li><a href="wiki_index.html">Página Inicial</a></li>
+                    <li class="sidebar-category">Básico do Jogo</li>
+                    <li><a href="introducao.html">Introdução</a></li>
+                    <li><a href="mecanicas_principais.html">Mecânicas Principais</a></li>
+                    <li><a href="jogabilidade.html">Jogabilidade</a></li>
+                    <li><a href="servidores.html">Servidores</a></li>
+                    <li><a href="dicas_tutoriais.html">Dicas e Tutoriais</a></li>
+                    <li class="sidebar-category">Classes e Treinamento</li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="treinamento_status.html">Treinamento e Status</a></li>
+                    <li class="sidebar-category">Conteúdo do Jogo</li>
+                    <li><a href="mapas.html">Mapas e Regiões</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                    <li><a href="quests_cacadas.html">Quests e Caçadas</a></li>
+                    <li><a href="sigils.html">Sigils</a></li>
+                    <li><a href="mobs.html">Monstros</a></li>
+                    <li class="sidebar-category">Aspectos Sociais</li>
+                    <li><a href="guildas.html">Guildas</a></li>
+                    <li><a href="pvp.html">PvP</a></li>
+                    <li><a href="em_desenvolvimento.html" class="active-wiki-link">Em Desenvolvimento</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section id="wiki-main-content">
+            <div class="breadcrumb"><a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Em Desenvolvimento</span></div>
+            
+                       <!-- Busca e navegação rápida -->
+            <div class="wiki-search-bar-container">
+                <form class="wiki-search-form" action="search-results.html" method="get">
+                    <input type="text" id="wiki-search-bar" name="q" placeholder="Buscar na wiki..." autocomplete="off">
+                    <button type="submit" id="wiki-search-button">Buscar</button>
+                </form>
+            </div>
+            
+            <h1 class="page-title">Conteúdo Futuro e Em Desenvolvimento</h1>
+            <p>Grind Hero é um universo em constante expansão! Esta seção é dedicada a apresentar os <span class="tooltip">teasers<span class="tooltiptext">Pequenas prévias ou informações sobre conteúdo que ainda será lançado.</span></span> e informações sobre o que está por vir, novos mapas, economia e muito mais.</p>
+
+            
+            <section class="teaser-section" id="mapas">
+                <h3>Novos Mapas e Biomas - Expansão do Mundo</h3>
+                <p>O mundo de Grind Hero continuará a crescer, trazendo novos desafios, criaturas e tesouros.</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="maps-progress" style="width: 40%;">Novos Mapas - 40% Concluído</div>
+                </div>
+                <h3>Próximas Regiões (Teasers):</h3>
+                <ul>
+                    <li><strong>Ilha Rukora:</strong> O jogador iniciará sua jornada na ilha Rukora, especificamente na Vila Elfhein, esta vila era reino dos grandes elfos enquanto eles ainda viviam entre os humanos antes de partirem para sua última grande jornada. Hoje a vila serve como abrigo e base para os novos recrutas que estão em treinamento.</li>
+                </ul>
+                <div class="teaser-gallery">
+                    <img src="../wiki/Imagens/mapas/ILHA RUKORA Full map.png" alt="Teaser Ilha Rukora">
+                    <img src="../wiki/Imagens/mapas/ILHA RUKORA.png" alt="Teaser Vila Elfhein">
+                </div>
+
+                <h3>Alerta de Spoiler</h3>
+                <ul>
+                    <li><strong>Rat Cave:</strong> Esta caverna gigante será a primeira caverna que o jogador terá contato quando entrar no jogo. Ela possuirá mais de um andar e até mesmo baús com itens para o jogador explorar e coletar.</li>
+                    <li><strong>Vila dos Orcs:</strong> Uma vila fortificada habitada por orcs, com missões e desafios únicos, não sabemos muito sobre ela ainda e se há realmente Orcs.</li>
+                </ul>
+                <div class="teaser-gallery">
+                    <img src="../wiki/Imagens/mapas/Rat_cave_full_map.png" alt="Teaser Caverna do Rato">
+                    <img src="../wiki/Imagens/mapas/Rat_cave_input.png" alt="Teaser Entrada da Caverna do Rato">
+                    <img src="../wiki/Imagens/mapas/Spoiler_orc_villa 2.png" alt="Teaser Vila dos Orcs">
+                    <img src="../wiki/Imagens/mapas/Spoiler_orc_villa.png" alt="Teaser Vila dos Orcs Full Map">
+                </div>
+
+                <h3>Um Misterio</h3>
+                <ul>
+                    <li><strong>Torre ou Castelo ?</strong> Esta estrutura imponente será um dos principais pontos de interesse no jogo. Sua verdadeira função e os segredos que abriga ainda são desconhecidos.</li>                  
+                </ul>
+                <div class="teaser-gallery">
+                    <img src="../wiki/Imagens/mapas/torre ou castelo.png" alt="Teaser Torre ou Castelo ?">                
+                </div>
+
+            </section>
+            
+            <section class="teaser-section" id="economia">
+                <h3>Sistema de Economia Avançado</h3>
+                <p>Uma economia robusta e controlada pelos jogadores está sendo desenvolvida, com foco em:</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="economy-progress" style="width: 60%;">Economia - 60% Concluído</div>
+                </div>
+                <ul>
+                    <li><strong>Casa de Leilões Global:</strong> Para compra e venda de itens entre jogadores.</li>
+                </ul>
+            </section>
+
+            <section class="future-content-section">
+                <h3>Outros Conteúdos Planejados</h3>
+                <ul>
+                    <li><strong>Mapas completos para o lançamento:</strong> Em desenvolvimento, sem data definida mas previsto para ser entregue em julho no lançamento oficial.</li>
+                    <li><strong>Eventos Mundiais Dinâmicos:</strong> Invasões, chefes mundiais e mais.</li>
+                    <li><strong>Novas Classes e Especializações:</strong> Expansão contínua das opções de jogo.</li>
+                    <li><strong>Crafting de Itens e equipamentos:</strong> Em breve, não se sabe muito sobre isso.</li>
+                </ul>
+                <p>Fique ligado nos canais oficiais para mais novidades e datas de lançamento!</p>
+            </section>
+
+            <div class="wiki-feedback-section">
+                <p>Esta página foi útil?</p>
+                <button class="feedback-yes">Sim</button>
+                <button class="feedback-no">Não</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="wiki-ui-controls"><button id="font-increase-button">A+</button><button id="font-decrease-button">A-</button></div>
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo"><img src="../images/red-skull-logo.png" alt="RED SKULL"></div>
+            <div class="footer-links"><ul><li><a href="../index.html">Início</a></li><li><a href="../about.html">Sobre</a></li><li><a href="../join.html">Recrutamento</a></li><li><a href="wiki_index.html">Wiki</a></li></ul></div>
+            <div class="footer-social"><a href="#" target="_blank" class="social-link discord-link">Discord</a><a href="#" target="_blank" class="social-link youtube-link">YouTube</a><a href="#" target="_blank" class="social-link twitter-link">Twitter</a></div>
+            <div class="footer-copyright"><p>&copy; 2024 RED SKULL. Todos os direitos reservados. Jogo Grind Hero por Kahdymus.</p></div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/animations.js" defer></script>
+    <script src="js/wiki_interactive.js" defer></script>
+    <script src="../js/ux-improvements.js" defer></script>
+    <script src="../js/mobile-menu.js" defer></script>
+    <script>
+        // Simulação de atualização de barra de progresso
+        document.addEventListener("DOMContentLoaded", () => {
+            const pvpProgress = document.getElementById("pvp-progress");
+            const mapsProgress = document.getElementById("maps-progress");
+            const economyProgress = document.getElementById("economy-progress");
+
+            // Para demonstração, definimos a largura aqui. Em um cenário real, viria de dados.
+            if(pvpProgress) pvpProgress.style.width = pvpProgress.textContent.match(/(\d+)%/)[1] + '%';
+            if(mapsProgress) mapsProgress.style.width = mapsProgress.textContent.match(/(\d+)%/)[1] + '%';
+            if(economyProgress) economyProgress.style.width = economyProgress.textContent.match(/(\d+)%/)[1] + '%';
+        });
+    </script>
+</body>
+</html>
+
+
+

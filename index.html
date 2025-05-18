@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RED SKULL - Guild - Grind Hero, recrutamento PvP hardcore">
+    <meta name="keywords" content="RED SKULL, guild, Grind Hero, PvP, guerra, sangue, glória">
+    <title>RED SKULL | Guerra, Sangue e Glória</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/ux-improvements.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@300..700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/audio.js" defer></script>
+    <script src="js/ux-improvements.js" defer></script>
+</head>
+<body class="preload">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="skull-loader">
+            <img src="images/red-skull-logo.png" alt="RED SKULL">
+            <div class="loading-text">Preparando para a batalha...</div>
+        </div>
+    </div>
+
+    <!-- Controle de Áudio -->
+    <div id="audio-control">
+        <button id="toggle-audio" aria-label="Ativar/Desativar som">
+            <span class="audio-icon audio-on"></span>
+        </button>
+    </div>
+
+    <!-- Modo Guerra Toggle -->
+    <div id="war-mode-toggle">
+        <button id="toggle-war-mode" aria-label="Ativar/Desativar Modo Guerra">
+            <span class="war-icon">⚔️</span>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="images/red-skull-logo.png" alt="RED SKULL">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span class="sword-icon"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="join.html">Recrutamento</a></li>
+                    <li><a href="achievements.html">Mural de Glórias</a></li>
+                    <li><a href="community.html">Comunidade</a></li>
+                    <li><a href="wiki/wiki_index.html">Wiki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="videos/battle-background.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="logo-animated">
+                <img src="images/red-skull-logo-animated2.png" alt="RED SKULL" class="flame-effect">
+            </div>
+            <div class="cta-container">
+                <a href="join.html" class="cta-button">Junte-se à Carnificina</a>
+            </div>
+        </div>
+    <div class="scroll-indicator">
+        <span class="scroll-arrow"></span>
+    </div>
+</section>
+
+    <!-- Missão de Iniciação -->
+    <section id="initiation">
+        <div class="container">
+            <h2 class="section-title">Missão de Iniciação</h2>
+            <div class="mission-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-icon"></div>
+                        <span class="step-name">Visitante</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-icon"></div>
+                        <span class="step-name">Recruta</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-icon"></div>
+                        <span class="step-name">Guerreiro</span>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-icon"></div>
+                        <span class="step-name">Campeão</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mission-description">
+                <p>Complete os passos para se tornar um verdadeiro RED SKULL:</p>
+                <ol class="mission-steps">
+                    <li class="active">Explore o site</li>
+                    <li>Preencha o formulário de recrutamento</li>
+                    <li>Junte-se ao Discord</li>
+                    <li>Participe de sua primeira batalha</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destaques -->
+    <section id="highlights">
+        <div class="container">
+            <h2 class="section-title">Conquistas Recentes</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-image">
+                        <img src="images/highlight-raid1.jpg" alt="Raid Noturna">
+                        <div class="highlight-overlay"></div>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>Top level no test-server</h3>
+                        <p>Líder da Guild conseguiu atingir o Top level</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-image">
+                        <img src="images/highlight-pvp.jpg" alt="Torneio PvP">
+                        <div class="highlight-overlay"></div>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>RAID mais perigosa PvP</h3>
+                        <p>Muito Sangue foi derramado nesse dia</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-image">
+                        <img src="images/highlight-territory.jpg" alt="Guerra Territorial">
+                        <div class="highlight-overlay"></div>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>Conquista Genocida </h3>
+                        <p>Essa contagem macabra no test-server um genocídio virtual liderado por Sir Black</p>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more-container">
+                <a href="achievements.html" class="view-more-button">Ver Mais Conquistas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Líderes -->
+<section id="leaders">
+    <div class="container">
+        <h2 class="section-title">Nossos Líderes</h2>
+
+        <!-- Líder Supremo -->
+        <div class="leader-supreme" style="display: flex; justify-content: center; margin-bottom: 40px;">
+            <div class="leader-card">
+                <div class="leader-avatar">
+                    <img src="images/leader-1.jpg" alt="Sir Black">
+                    <div class="leader-hover">
+                        <div class="leader-stats">
+                            <div class="stat">
+                                <span class="stat-name">Liderança</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Estratégia</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Influência</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3>Sir Black</h3>
+                    <p class="leader-title">Líder Supremo</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generais -->
+        <div class="leaders-grid">
+            <div class="leader-card">
+                <div class="leader-avatar">
+                    <img src="images/leader-2.jpg" alt="Momonga">
+                    <div class="leader-hover">
+                        <div class="leader-stats">
+                            <div class="stat">
+                                <span class="stat-name">Decifrar Sinais Ocultos</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Estratégia</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Inteligência</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3>Momonga</h3>
+                    <p class="leader-title">General do Sussurro</p>
+                </div>
+            </div>
+            <div class="leader-card">
+                <div class="leader-avatar">
+                    <img src="images/leader-3.jpg" alt="Asgore">
+                    <div class="leader-hover">
+                        <div class="leader-stats">
+                            <div class="stat">
+                                <span class="stat-name">Psicótica</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 96%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Intimidação</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 94%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Resiliência Mental</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3>Asgore</h3>
+                    <p class="leader-title">General Psicótica</p>
+                </div>
+            </div>
+            <div class="leader-card">
+                <div class="leader-avatar">
+                    <img src="images/leader-4.jpg" alt="Slogam">
+                    <div class="leader-hover">
+                        <div class="leader-stats">
+                            <div class="stat">
+                                <span class="stat-name">Bravura</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Resistência</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Moral de Tropa</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 97%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3>Slogam</h3>
+                    <p class="leader-title">General Destemido</p>
+                </div>
+            </div>
+            <div class="leader-card">
+                <div class="leader-avatar">
+                    <img src="images/leader-5.jpg" alt="Hercules">
+                    <div class="leader-hover">
+                        <div class="leader-stats">
+                            <div class="stat">
+                                <span class="stat-name">Guerra</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 99%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Força Bruta</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">Táticas Ofensivas</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3>Hercules</h3>
+                    <p class="leader-title">General de Guerra</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-more-container">
+            <a href="about.html" class="view-more-button">Conhecer a Hierarquia</a>
+        </div>
+    </div>
+</section>
+ 
+
+    <!-- Depoimentos -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Palavras de Guerra</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Aqui, sangue é respeito! Nunca encontrei guerreiros tão dedicados quanto na RED SKULL."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-1.jpg" alt="SkullReaper">
+                        </div>
+                        <div class="author-info">
+                            <h3>SkullReaper</h3>
+                            <p>Membro Elite • 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Desde que entrei para a RED SKULL, nunca mais perdi uma batalha. Somos imparáveis!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-2.jpg" alt="BloodFang">
+                        </div>
+                        <div class="author-info">
+                            <h3>BloodFang</h3>
+                            <p>Campeão PvP • 1 ano</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"A RED SKULL não é apenas uma guilda, é uma família de guerreiros. Aqui você encontra seu lugar na batalha."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-3.jpg" alt="CrimsonWitch">
+                        </div>
+                        <div class="author-info">
+                            <h3>CrimsonWitch</h3>
+                            <p>Maga de Elite • 3 anos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="prev-slide" aria-label="Depoimento anterior"></button>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="next-slide" aria-label="Próximo depoimento"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Próximos Eventos -->
+    <section id="upcoming-events">
+        <div class="container">
+            <h2 class="section-title">Próximas Batalhas</h2>
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">25</span>
+                        <span class="month">ABR</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Raid Noturna: Caverna do Dragão Negro</h3>
+                        <p class="event-time">21:00 - 23:30</p>
+                        <p class="event-description">Prepare-se para enfrentar o temível Dragão Negro e seus lacaios. Recompensas épicas para os sobreviventes!</p>
+                    </div>
+                    <div class="event-action">
+                        <button class="event-join">Participar</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">28</span>
+                        <span class="month">ABR</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Torneio PvP: Arena de Sangue</h3>
+                        <p class="event-time">19:00 - 22:00</p>
+                        <p class="event-description">Mostre seu valor na arena! Os vencedores receberão equipamentos lendários e pontos de honra.</p>
+                    </div>
+                    <div class="event-action">
+                        <button class="event-join">Participar</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">01</span>
+                        <span class="month">MAI</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Guerra Territorial: Conquista das Terras Altas</h3>
+                        <p class="event-time">20:00 - 00:00</p>
+                        <p class="event-description">Uma batalha épica pela conquista do território mais valioso de Grind Hero. Todos os membros são convocados!</p>
+                    </div>
+                    <div class="event-action">
+                        <button class="event-join">Participar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more-container">
+                <a href="events.html" class="view-more-button">Ver Calendário Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord -->
+    <section id="discord">
+        <div class="container">
+            <h2 class="section-title">Junte-se ao Discord</h2>
+            <div class="discord-container">
+                <div class="discord-info">
+                    <p>Conecte-se com outros guerreiros, participe de eventos exclusivos e receba informações em primeira mão!</p>
+                    <div class="discord-stats">
+                        <div class="stat">
+                            <span class="stat-value">1,248</span>
+                            <span class="stat-label">Membros</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">187</span>
+                            <span class="stat-label">Online</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">24</span>
+                            <span class="stat-label">Canais</span>
+                        </div>
+                    </div>
+                    <a href="https://discord.gg/redskull" class="discord-button" target="_blank">Entrar no Discord</a>
+                </div>
+                <div class="discord-widget">
+                    <iframe src="https://discord.com/widget?id=123456789&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <img src="images/red-skull-logo-small.png" alt="RED SKULL">
+                        </div>
+                        <p class="footer-slogan">"Red Skull é guerra, sangue e glória!"</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <span class="social-icon youtube"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitch">
+                                <span class="social-icon twitch"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Discord">
+                                <span class="social-icon discord"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <span class="social-icon instagram"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Navegação</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Início</a></li>
+                            <li><a href="about.html">Sobre</a></li>
+                            <li><a href="join.html">Recrutamento</a></li>
+                            <li><a href="achievements.html">Mural de Glórias</a></li>
+                            <li><a href="community.html">Comunidade</a></li>
+                            <li><a href="wiki/wiki_index.html">Wiki</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Recursos</h3>
+                        <ul class="footer-links">
+                            <li><a href="events.html">Calendário</a></li>
+                            <li><a href="gallery.html">Galeria</a></li>
+                            <li><a href="rankings.html">Rankings</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Contato</h3>
+                        <p>Para assuntos oficiais, entre em contato com nossos líderes:</p>
+                        <a href="mailto:contact@redskullguild.com" class="contact-email">contact@redskullguild.com</a>
+                        <div class="donate-container">
+                            <a href="donate.html" class="donate-button">Abasteça a Forja</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">© 2025 RED SKULL Guild. Todos os direitos reservados.</p>
+                <p class="disclaimer">Grind Hero é uma marca registrada de seus respectivos proprietários.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Easter Egg (Clique 3x no crânio) -->
+    <div id="easter-egg" class="hidden">
+        <div class="easter-egg-content">
+            <h3>Código Secreto Desbloqueado!</h3>
+            <div class="secret-code">RS-GLORY-2025</div>
+            <p>Use este código em Grind Hero para receber um item exclusivo!</p>
+            <button id="close-easter-egg">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="background-music" loop>
+        <source src="audio/war-drums.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>

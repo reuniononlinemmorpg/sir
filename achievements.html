@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mural de Glórias da guilda RED SKULL - Conquistas, rankings e vitórias em Grind Hero">
+    <meta name="keywords" content="RED SKULL, guilda, Grind Hero, conquistas, ranking, vitórias, PvP">
+    <title>Mural de Glórias | RED SKULL</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/ux-improvements.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/audio.js" defer></script>
+    <script src="js/ux-improvements.js" defer></script>
+</head>
+<body class="preload">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="skull-loader">
+            <img src="images/red-skull-logo.png" alt="RED SKULL">
+            <div class="loading-text">Preparando para a batalha...</div>
+        </div>
+    </div>
+
+    <!-- Controle de Áudio -->
+    <div id="audio-control">
+        <button id="toggle-audio" aria-label="Ativar/Desativar som">
+            <span class="audio-icon audio-on"></span>
+        </button>
+    </div>
+
+    <!-- Modo Guerra Toggle -->
+    <div id="war-mode-toggle">
+        <button id="toggle-war-mode" aria-label="Ativar/Desativar Modo Guerra">
+            <span class="war-icon">⚔️</span>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="images/red-skull-logo.png" alt="RED SKULL">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span class="sword-icon"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="join.html">Recrutamento</a></li>
+                    <li><a href="achievements.html" class="active">Mural de Glórias</a></li>
+                    <li><a href="community.html">Comunidade</a></li>
+                    <li><a href="wiki/wiki_index.html">Wiki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="achievements-hero" class="parallax-bg" data-speed="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1 class="page-title reveal">Mural de Glórias</h1>
+            <p class="page-subtitle reveal">Conquistas, vitórias e o legado sangrento da RED SKULL</p>
+        </div>
+    </section>
+
+    <!-- Conquistas Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title reveal">Nossas Conquistas</h2>
+            <div class="achievements-filter reveal">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="raid">Raids</button>
+                <button class="filter-btn" data-filter="pvp">PvP</button>
+                <button class="filter-btn" data-filter="territory">Territórios</button>
+                <button class="filter-btn" data-filter="event">Eventos</button>
+            </div>
+            <div class="achievements-gallery reveal">
+                <div class="gallery-item" data-category="raid">
+                    <div class="gallery-image">
+                        <img src="images/achievement-raid-1.jpg" alt="Conquista do Abismo Eterno">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Conquista do Abismo Eterno</h3>
+                                <p>Primeira guilda a completar o raid mais difícil do jogo em dificuldade Pesadelo</p>
+                                <span class="gallery-date">15/01/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pvp">
+                    <div class="gallery-image">
+                        <img src="images/achievement-pvp-1.jpg" alt="Campeões da Arena de Sangue">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Campeões da Arena de Sangue</h3>
+                                <p>Cinco vitórias consecutivas no torneio sazonal de PvP</p>
+                                <span class="gallery-date">28/02/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="territory">
+                    <div class="gallery-image">
+                        <img src="images/achievement-territory-1.jpg" alt="Conquista da Cidadela Negra">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Conquista da Cidadela Negra</h3>
+                                <p>Tomamos controle da fortaleza mais disputada do mapa após 6 horas de batalha</p>
+                                <span class="gallery-date">10/03/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="event">
+                    <div class="gallery-image">
+                        <img src="images/achievement-event-1.jpg" alt="Festival das Sombras">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Festival das Sombras</h3>
+                                <p>Vencedores do evento sazonal com pontuação recorde</p>
+                                <span class="gallery-date">31/10/2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="raid">
+                    <div class="gallery-image">
+                        <img src="images/achievement-raid-2.jpg" alt="Dominação do Castelo das Sombras">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Dominação do Castelo das Sombras</h3>
+                                <p>Completamos o raid em tempo recorde de 45 minutos</p>
+                                <span class="gallery-date">05/04/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pvp">
+                    <div class="gallery-image">
+                        <img src="images/achievement-pvp-2.jpg" alt="Massacre no Vale">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Massacre no Vale</h3>
+                                <p>Eliminamos 3 guildas rivais em uma única batalha campal</p>
+                                <span class="gallery-date">17/03/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="territory">
+                    <div class="gallery-image">
+                        <img src="images/achievement-territory-2.jpg" alt="Império Territorial">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Império Territorial</h3>
+                                <p>Controle de 42% do mapa mundial, incluindo todas as 5 capitais</p>
+                                <span class="gallery-date">01/04/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="event">
+                    <div class="gallery-image">
+                        <img src="images/achievement-event-2.jpg" alt="Torneio dos Campeões">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Torneio dos Campeões</h3>
+                                <p>Nossos guerreiros ocuparam os 3 primeiros lugares no ranking individual</p>
+                                <span class="gallery-date">20/02/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="raid">
+                    <div class="gallery-image">
+                        <img src="images/achievement-raid-3.jpg" alt="Queda do Rei Demônio">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Queda do Rei Demônio</h3>
+                                <p>Derrotamos o chefe final da expansão com apenas 10 guerreiros</p>
+                                <span class="gallery-date">12/01/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pvp">
+                    <div class="gallery-image">
+                        <img src="images/achievement-pvp-3.jpg" alt="Dominação Total">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Dominação Total</h3>
+                                <p>Vitória perfeita no Torneio das Guildas sem perder uma única rodada</p>
+                                <span class="gallery-date">25/03/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="territory">
+                    <div class="gallery-image">
+                        <img src="images/achievement-territory-3.jpg" alt="Fortaleza Inexpugnável">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Fortaleza Inexpugnável</h3>
+                                <p>Defendemos nosso território principal contra o ataque coordenado de 5 guildas</p>
+                                <span class="gallery-date">07/04/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="event">
+                    <div class="gallery-image">
+                        <img src="images/achievement-event-3.jpg" alt="Caçada Sangrenta">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Caçada Sangrenta</h3>
+                                <p>Vencemos o evento mundial de caça a monstros com mais de 10.000 abates</p>
+                                <span class="gallery-date">15/02/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="load-more-container reveal">
+                <button class="load-more-button">Carregar Mais Conquistas</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ranking Section -->
+    <section id="rankings">
+        <div class="container">
+            <h2 class="section-title reveal">Ranking da Guilda</h2>
+            <div class="rankings-tabs reveal">
+                <button class="tab-btn active" data-tab="top-members">Top Membros</button>
+                <button class="tab-btn" data-tab="pvp-ranking">Ranking PvP</button>
+                <button class="tab-btn" data-tab="raid-ranking">Ranking de Raids</button>
+                <button class="tab-btn" data-tab="contribution">Contribuições</button>
+            </div>
+            <div class="rankings-content reveal">
+                <div class="tab-content active" id="top-members">
+                    <div class="ranking-table-container">
+                        <table class="ranking-table">
+                            <thead>
+                                <tr>
+                                    <th>Posição</th>
+                                    <th>Membro</th>
+                                    <th>Classe</th>
+                                    <th>Nível</th>
+                                    <th>Pontos de Honra</th>
+                                    <th>Conquistas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="rank-1">
+                                    <td>1</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-1.jpg" alt="BloodThrone">
+                                            </div>
+                                            <span>BloodThrone</span>
+                                        </div>
+                                    </td>
+                                    <td>Guerreiro</td>
+                                    <td>200</td>
+                                    <td>15,782</td>
+                                    <td>247</td>
+                                </tr>
+                                <tr class="rank-2">
+                                    <td>2</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-2.jpg" alt="IronReaper">
+                                            </div>
+                                            <span>IronReaper</span>
+                                        </div>
+                                    </td>
+                                    <td>Paladino</td>
+                                    <td>198</td>
+                                    <td>14,935</td>
+                                    <td>231</td>
+                                </tr>
+                                <tr class="rank-3">
+                                    <td>3</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-3.jpg" alt="ShadowHex">
+                                            </div>
+                                            <span>ShadowHex</span>
+                                        </div>
+                                    </td>
+                                    <td>Mago</td>
+                                    <td>197</td>
+                                    <td>14,128</td>
+                                    <td>219</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-4.jpg" alt="CrimsonWitch">
+                                            </div>
+                                            <span>CrimsonWitch</span>
+                                        </div>
+                                    </td>
+                                    <td>Feiticeira</td>
+                                    <td>195</td>
+                                    <td>13,567</td>
+                                    <td>205</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-5.jpg" alt="SkullReaper">
+                                            </div>
+                                            <span>SkullReaper</span>
+                                        </div>
+                                    </td>
+                                    <td>Assassino</td>
+                                    <td>193</td>
+                                    <td>12,984</td>
+                                    <td>198</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-6.jpg" alt="BloodFang">
+                                            </div>
+                                            <span>BloodFang</span>
+                                        </div>
+                                    </td>
+                                    <td>Caçador</td>
+                                    <td>192</td>
+                                    <td>12,456</td>
+                                    <td>187</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-7.jpg" alt="DarkVenom">
+                                            </div>
+                                            <span>DarkVenom</span>
+                                        </div>
+                                    </td>
+                                    <td>Necromante</td>
+                                    <td>190</td>
+                                    <td>11,879</td>
+                                    <td>175</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-8.jpg" alt="IronWolf">
+                                            </div>
+                                            <span>IronWolf</span>
+                                        </div>
+                                    </td>
+                                    <td>Druida</td>
+                                    <td>189</td>
+                                    <td>11,542</td>
+                                    <td>169</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-9.jpg" alt="ShadowBlade">
+                                            </div>
+                                            <span>ShadowBlade</span>
+                                        </div>
+                                    </td>
+                                    <td>Ladino</td>
+                                    <td>187</td>
+                                    <td>11,235</td>
+                                    <td>162</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-10.jpg" alt="FrostFang">
+                                            </div>
+                                            <span>FrostFang</span>
+                                        </div>
+                                    </td>
+                                    <td>Mago</td>
+                                    <td>185</td>
+                                    <td>10,987</td>
+                                    <td>158</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="view-more-container">
+                        <a href="rankings-full.html" class="view-more-button">Ver Ranking Completo</a>
+                    </div>
+                </div>
+                <div class="tab-content" id="pvp-ranking">
+                    <div class="ranking-table-container">
+                        <table class="ranking-table">
+                            <thead>
+                                <tr>
+                                    <th>Posição</th>
+                                    <th>Membro</th>
+                                    <th>Classe</th>
+                                    <th>Vitórias</th>
+                                    <th>Derrotas</th>
+                                    <th>Taxa de Vitória</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="rank-1">
+                                    <td>1</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-5.jpg" alt="SkullReaper">
+                                            </div>
+                                            <span>SkullReaper</span>
+                                        </div>
+                                    </td>
+                                    <td>Assassino</td>
+                                    <td>1,247</td>
+                                    <td>89</td>
+                                    <td>93.3%</td>
+                                </tr>
+                                <tr class="rank-2">
+                                    <td>2</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-1.jpg" alt="BloodThrone">
+                                            </div>
+                                            <span>BloodThrone</span>
+                                        </div>
+                                    </td>
+                                    <td>Guerreiro</td>
+                                    <td>1,189</td>
+                                    <td>102</td>
+                                    <td>92.1%</td>
+                                </tr>
+                                <tr class="rank-3">
+                                    <td>3</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-6.jpg" alt="BloodFang">
+                                            </div>
+                                            <span>BloodFang</span>
+                                        </div>
+                                    </td>
+                                    <td>Caçador</td>
+                                    <td>1,056</td>
+                                    <td>98</td>
+                                    <td>91.5%</td>
+                                </tr>
+                                <!-- Mais linhas aqui -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="view-more-container">
+                        <a href="pvp-rankings.html" class="view-more-button">Ver Ranking Completo</a>
+                    </div>
+                </div>
+                <div class="tab-content" id="raid-ranking">
+                    <div class="ranking-table-container">
+                        <table class="ranking-table">
+                            <thead>
+                                <tr>
+                                    <th>Posição</th>
+                                    <th>Membro</th>
+                                    <th>Classe</th>
+                                    <th>Raids Lideradas</th>
+                                    <th>Raids Completadas</th>
+                                    <th>DPS Médio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="rank-1">
+                                    <td>1</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-2.jpg" alt="IronReaper">
+                                            </div>
+                                            <span>IronReaper</span>
+                                        </div>
+                                    </td>
+                                    <td>Paladino</td>
+                                    <td>87</td>
+                                    <td>342</td>
+                                    <td>15,782</td>
+                                </tr>
+                                <tr class="rank-2">
+                                    <td>2</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-3.jpg" alt="ShadowHex">
+                                            </div>
+                                            <span>ShadowHex</span>
+                                        </div>
+                                    </td>
+                                    <td>Mago</td>
+                                    <td>65</td>
+                                    <td>328</td>
+                                    <td>18,935</td>
+                                </tr>
+                                <tr class="rank-3">
+                                    <td>3</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-4.jpg" alt="CrimsonWitch">
+                                            </div>
+                                            <span>CrimsonWitch</span>
+                                        </div>
+                                    </td>
+                                    <td>Feiticeira</td>
+                                    <td>59</td>
+                                    <td>315</td>
+                                    <td>17,128</td>
+                                </tr>
+                                <!-- Mais linhas aqui -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="view-more-container">
+                        <a href="raid-rankings.html" class="view-more-button">Ver Ranking Completo</a>
+                    </div>
+                </div>
+                <div class="tab-content" id="contribution">
+                    <div class="ranking-table-container">
+                        <table class="ranking-table">
+                            <thead>
+                                <tr>
+                                    <th>Posição</th>
+                                    <th>Membro</th>
+                                    <th>Classe</th>
+                                    <th>Recursos Doados</th>
+                                    <th>Eventos Organizados</th>
+                                    <th>Recrutas Treinados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="rank-1">
+                                    <td>1</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-1.jpg" alt="BloodThrone">
+                                            </div>
+                                            <span>BloodThrone</span>
+                                        </div>
+                                    </td>
+                                    <td>Guerreiro</td>
+                                    <td>1,250,000</td>
+                                    <td>124</td>
+                                    <td>87</td>
+                                </tr>
+                                <tr class="rank-2">
+                                    <td>2</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-4.jpg" alt="CrimsonWitch">
+                                            </div>
+                                            <span>CrimsonWitch</span>
+                                        </div>
+                                    </td>
+                                    <td>Feiticeira</td>
+                                    <td>980,000</td>
+                                    <td>98</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr class="rank-3">
+                                    <td>3</td>
+                                    <td>
+                                        <div class="member-cell">
+                                            <div class="member-avatar">
+                                                <img src="images/member-8.jpg" alt="IronWolf">
+                                            </div>
+                                            <span>IronWolf</span>
+                                        </div>
+                                    </td>
+                                    <td>Druida</td>
+                                    <td>875,000</td>
+                                    <td>87</td>
+                                    <td>59</td>
+                                </tr>
+                                <!-- Mais linhas aqui -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="view-more-container">
+                        <a href="contribution-rankings.html" class="view-more-button">Ver Ranking Completo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendário Section -->
+    <section id="calendar">
+        <div class="container">
+            <h2 class="section-title reveal">Calendário de Eventos</h2>
+            <div class="calendar-container reveal">
+                <div class="calendar-header">
+                    <button class="calendar-nav prev-month">◄</button>
+                    <h3 class="current-month">Abril 2025</h3>
+                    <button class="calendar-nav next-month">►</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day-names">
+                        <div>Dom</div>
+                        <div>Seg</div>
+                        <div>Ter</div>
+                        <div>Qua</div>
+                        <div>Qui</div>
+                        <div>Sex</div>
+                        <div>Sáb</div>
+                    </div>
+                    <div class="calendar-days">
+                        <!-- Dias gerados via JavaScript -->
+                    </div>
+                </div>
+                <div class="event-details">
+                    <div class="event-details-header">
+                        <h3>Eventos do Dia <span class="selected-date">25/04/2025</span></h3>
+                    </div>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-time">21:00 - 23:30</div>
+                            <div class="event-info">
+                                <h4>Raid Noturna: Caverna do Dragão Negro</h4>
+                                <p>Prepare-se para enfrentar o temível Dragão Negro e seus lacaios. Recompensas épicas para os sobreviventes!</p>
+                                <div class="event-meta">
+                                    <span class="event-type raid">Raid</span>
+                                    <span class="event-difficulty nightmare">Pesadelo</span>
+                                    <span class="event-slots">30 vagas</span>
+                                </div>
+                                <button class="event-join">Participar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar-legend reveal">
+                <div class="legend-item">
+                    <span class="legend-color raid"></span>
+                    <span class="legend-text">Raids</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color pvp"></span>
+                    <span class="legend-text">PvP</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color territory"></span>
+                    <span class="legend-text">Guerra Territorial</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color event"></span>
+                    <span class="legend-text">Eventos Especiais</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color training"></span>
+                    <span class="legend-text">Treinamento</span>
+                </div>
+            </div>
+            <div class="calendar-sync reveal">
+                <button class="sync-button">Sincronizar com Google Calendar</button>
+                <button class="sync-button">Sincronizar com Discord</button>
+                <button class="sync-button">Baixar Calendário (.ics)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Troféus Section -->
+    <section id="trophies">
+        <div class="container">
+            <h2 class="section-title reveal">Nossos Troféus</h2>
+            <div class="trophies-grid reveal">
+                <div class="trophy-card">
+                    <div class="trophy-image">
+                        <img src="images/trophy-1.png" alt="Crânio de Ouro">
+                    </div>
+                    <div class="trophy-info">
+                        <h3>Crânio de Ouro</h3>
+                        <p>Conquistado ao vencer o Torneio das Guildas de 2024</p>
+                    </div>
+                </div>
+                <div class="trophy-card">
+                    <div class="trophy-image">
+                        <img src="images/trophy-2.png" alt="Espada Carmesim">
+                    </div>
+                    <div class="trophy-info">
+                        <h3>Espada Carmesim</h3>
+                        <p>Prêmio por 5 vitórias consecutivas na Arena de Sangue</p>
+                    </div>
+                </div>
+                <div class="trophy-card">
+                    <div class="trophy-image">
+                        <img src="images/trophy-3.png" alt="Coroa do Conquistador">
+                    </div>
+                    <div class="trophy-info">
+                        <h3>Coroa do Conquistador</h3>
+                        <p>Concedida à guilda que controla todas as 5 capitais</p>
+                    </div>
+                </div>
+                <div class="trophy-card">
+                    <div class="trophy-image">
+                        <img src="images/trophy-4.png" alt="Escudo Inquebrável">
+                    </div>
+                    <div class="trophy-info">
+                        <h3>Escudo Inquebrável</h3>
+                        <p>Prêmio por defender um território por 100 dias consecutivos</p>
+                    </div>
+                </div>
+                <div class="trophy-card">
+                    <div class="trophy-image">
+                        <img src="images/trophy-5.png" alt="Olho do Abismo">
+                    </div>
+                    <div class="trophy-info">
+                        <h3>Olho do Abismo</h3>
+                        <p>Concedido à primeira guilda a completar o Abismo Eterno</p>
+                    </div>
+                </div>
+                <div class="trophy-card">
+                    <div class="trophy-image">
+                        <img src="images/trophy-6.png" alt="Chama Eterna">
+                    </div>
+                    <div class="trophy-info">
+                        <h3>Chama Eterna</h3>
+                        <p>Prêmio por manter a guilda ativa por 5 anos consecutivos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="achievements-cta" class="parallax-bg" data-speed="0.3">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Quer fazer parte da nossa história?</h2>
+                <p>Junte-se à RED SKULL e escreva seu nome em sangue no livro das lendas.</p>
+                <a href="join.html" class="cta-button">Junte-se à Carnificina</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <img src="images/red-skull-logo-small.png" alt="RED SKULL">
+                        </div>
+                        <p class="footer-slogan">"Red Skull é guerra, sangue e glória!"</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <span class="social-icon youtube"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitch">
+                                <span class="social-icon twitch"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Discord">
+                                <span class="social-icon discord"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <span class="social-icon instagram"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Navegação</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Início</a></li>
+                            <li><a href="about.html">Sobre</a></li>
+                            <li><a href="join.html">Recrutamento</a></li>
+                            <li><a href="achievements.html">Mural de Glórias</a></li>
+                            <li><a href="community.html">Comunidade</a></li>
+                            <li><a href="wiki/wiki_index.html">Wiki</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Recursos</h3>
+                        <ul class="footer-links">
+                            <li><a href="events.html">Calendário</a></li>
+                            <li><a href="gallery.html">Galeria</a></li>
+                            <li><a href="rankings.html">Rankings</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Contato</h3>
+                        <p>Para assuntos oficiais, entre em contato com nossos líderes:</p>
+                        <a href="mailto:contact@redskullguild.com" class="contact-email">contact@redskullguild.com</a>
+                        <div class="donate-container">
+                            <a href="donate.html" class="donate-button">Abasteça a Forja</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">© 2025 RED SKULL Guild. Todos os direitos reservados.</p>
+                <p class="disclaimer">Grind Hero é uma marca registrada de seus respectivos proprietários.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Easter Egg (Clique 3x no crânio) -->
+    <div id="easter-egg" class="hidden">
+        <div class="easter-egg-content">
+            <h3>Código Secreto Desbloqueado!</h3>
+            <div class="secret-code">RS-GLORY-2025</div>
+            <p>Use este código em Grind Hero para receber um item exclusivo!</p>
+            <button id="close-easter-egg">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="background-music" loop>
+        <source src="audio/battle-drums.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound">
+        <source src="audio/sword-clash.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>

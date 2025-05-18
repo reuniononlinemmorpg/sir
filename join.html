@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Junte-se à guilda RED SKULL, a força dominante em Grind Hero. Recrutamento para guerreiros de elite.">
+    <meta name="keywords" content="RED SKULL, guilda, Grind Hero, recrutamento, PvP, hardcore">
+    <title>Recrutamento | RED SKULL</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/ux-improvements.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/audio.js" defer></script>
+    <script src="js/ux-improvements.js" defer></script>
+</head>
+<body class="preload">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="skull-loader">
+            <img src="images/red-skull-logo.png" alt="RED SKULL">
+            <div class="loading-text">Preparando para a batalha...</div>
+        </div>
+    </div>
+
+    <!-- Controle de Áudio -->
+    <div id="audio-control">
+        <button id="toggle-audio" aria-label="Ativar/Desativar som">
+            <span class="audio-icon audio-on"></span>
+        </button>
+    </div>
+
+    <!-- Modo Guerra Toggle -->
+    <div id="war-mode-toggle">
+        <button id="toggle-war-mode" aria-label="Ativar/Desativar Modo Guerra">
+            <span class="war-icon">⚔️</span>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="images/red-skull-logo.png" alt="RED SKULL">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span class="sword-icon"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="join.html" class="active">Recrutamento</a></li>
+                    <li><a href="achievements.html">Mural de Glórias</a></li>
+                    <li><a href="community.html">Comunidade</a></li>
+                    <li><a href="wiki/wiki_index.html">Wiki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="join-hero" class="parallax-bg" data-speed="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1 class="page-title reveal">Recrutamento</h1>
+            <p class="page-subtitle reveal">Você tem o que é preciso para se tornar um RED SKULL?</p>
+        </div>
+    </section>
+
+    <!-- Requisitos Section -->
+    <section id="requirements">
+        <div class="container">
+            <h2 class="section-title reveal">Requisitos para Ingresso</h2>
+            <div class="requirements-intro reveal">
+                <p>A RED SKULL não é para qualquer um. Buscamos apenas os melhores, os mais dedicados, os que não conhecem o significado da palavra "derrota". Se você não está disposto a sangrar pela guilda, procure outro lugar.</p>
+            </div>
+            <div class="requirements-grid reveal">
+                <div class="requirement-card">
+                    <div class="requirement-icon">
+                        <img src="images/icon-level.png" alt="Nível">
+                    </div>
+                    <h3>Nível 100+</h3>
+                    <p>Apenas jogadores de nível 100 ou superior em Grind Hero serão considerados. Sem exceções.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="requirement-icon">
+                        <img src="images/icon-pvp-rank.png" alt="Rank PvP">
+                    </div>
+                    <h3>Rank Diamante em PvP</h3>
+                    <p>Você deve ter alcançado pelo menos o rank Diamante na última temporada de PvP.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="requirement-icon">
+                        <img src="images/icon-raid.png" alt="Raid">
+                    </div>
+                    <h3>Experiência em Raids</h3>
+                    <p>Ter completado pelo menos 5 raids de nível máximo com sucesso.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="requirement-icon">
+                        <img src="images/icon-gear.png" alt="Equipamento">
+                    </div>
+                    <h3>Equipamento de Elite</h3>
+                    <p>Pontuação de equipamento mínima de 850, com pelo menos 3 itens lendários.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="requirement-icon">
+                        <img src="images/icon-activity.png" alt="Atividade">
+                    </div>
+                    <h3>Atividade Constante</h3>
+                    <p>Disponibilidade para participar de pelo menos 3 eventos semanais da guilda.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="requirement-icon">
+                        <img src="images/icon-discord.png" alt="Discord">
+                    </div>
+                    <h3>Comunicação</h3>
+                    <p>Uso obrigatório de Discord com microfone funcional durante eventos.</p>
+                </div>
+            </div>
+            <div class="requirements-note reveal">
+                <p>Atenção: Estes são apenas os requisitos mínimos. O processo seletivo inclui testes práticos e entrevista com os líderes da guilda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo Section -->
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title reveal">Processo de Seleção</h2>
+            <div class="process-steps reveal">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Inscrição</h3>
+                        <p>Preencha o formulário de inscrição com seus dados e informações do personagem. Anexe screenshots de seu perfil, equipamentos e conquistas.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Análise Inicial</h3>
+                        <p>Nossa equipe de recrutamento analisará seu perfil e histórico. Apenas os candidatos que atenderem aos requisitos mínimos passarão para a próxima fase.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Teste Prático</h3>
+                        <p>Os aprovados na análise inicial serão convidados para um teste prático, que inclui duelos PvP contra membros da guilda e participação em uma raid.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Entrevista</h3>
+                        <p>Os candidatos que se destacarem no teste prático serão entrevistados por um dos Generais de Guerra ou Cavaleiros do Crânio para avaliar comprometimento e alinhamento com os valores da guilda.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Período Probatório</h3>
+                        <p>Se aprovado, você ingressará na RED SKULL como Recruta e passará por um período probatório de 30 dias, durante o qual será avaliado constantemente.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Ritual de Sangue</h3>
+                        <p>Ao final do período probatório, você participará do Ritual de Sangue - um duelo cerimonial contra um membro veterano que selará seu lugar na guilda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário Section -->
+    <section id="application-form">
+        <div class="container">
+            <h2 class="section-title reveal">Formulário de Inscrição</h2>
+            <div class="form-container reveal">
+                <form id="recruitment-form" class="blood-form">
+                    <div class="form-group">
+                        <label for="player-name">Nome do Jogador</label>
+                        <input type="text" id="player-name" name="player-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="character-name">Nome do Personagem</label>
+                        <input type="text" id="character-name" name="character-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="character-class">Classe do Personagem</label>
+                        <select id="character-class" name="character-class" required>
+                            <option value="">Selecione uma classe</option>
+                            <option value="warrior">Guerreiro</option>
+                            <option value="mage">Mago</option>
+                            <option value="rogue">Ladino</option>
+                            <option value="hunter">Caçador</option>
+                            <option value="paladin">Paladino</option>
+                            <option value="necromancer">Necromante</option>
+                            <option value="druid">Druida</option>
+                            <option value="warlock">Bruxo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="character-level">Nível do Personagem</label>
+                        <input type="number" id="character-level" name="character-level" min="100" max="200" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pvp-rank">Rank PvP Atual</label>
+                        <select id="pvp-rank" name="pvp-rank" required>
+                            <option value="">Selecione seu rank</option>
+                            <option value="bronze">Bronze</option>
+                            <option value="silver">Prata</option>
+                            <option value="gold">Ouro</option>
+                            <option value="platinum">Platina</option>
+                            <option value="diamond">Diamante</option>
+                            <option value="master">Mestre</option>
+                            <option value="grandmaster">Grão-Mestre</option>
+                            <option value="challenger">Desafiante</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="gear-score">Pontuação de Equipamento</label>
+                        <input type="number" id="gear-score" name="gear-score" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="legendary-items">Número de Itens Lendários</label>
+                        <input type="number" id="legendary-items" name="legendary-items" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="raids-completed">Raids de Nível Máximo Completadas</label>
+                        <input type="number" id="raids-completed" name="raids-completed" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="discord-id">ID do Discord</label>
+                        <input type="text" id="discord-id" name="discord-id" placeholder="Exemplo: Usuario#1234" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="availability">Disponibilidade Semanal (horas)</label>
+                        <input type="number" id="availability" name="availability" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Experiência Prévia em Guildas</label>
+                        <textarea id="experience" name="experience" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="motivation">Por que deseja se juntar à RED SKULL?</label>
+                        <textarea id="motivation" name="motivation" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="character-screenshot">Screenshot do Personagem</label>
+                        <input type="file" id="character-screenshot" name="character-screenshot" accept="image/*" required>
+                        <p class="form-hint">Anexe uma screenshot mostrando seu personagem, nível e equipamentos.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="achievements-screenshot">Screenshot de Conquistas</label>
+                        <input type="file" id="achievements-screenshot" name="achievements-screenshot" accept="image/*" required>
+                        <p class="form-hint">Anexe uma screenshot mostrando suas principais conquistas no jogo.</p>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Declaro que li e concordo com o <a href="code-of-conduct.html" target="_blank">Código de Conduta</a> da RED SKULL.</label>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="commitment" name="commitment" required>
+                        <label for="commitment">Comprometo-me a participar de pelo menos 3 eventos semanais da guilda.</label>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="blood-oath" name="blood-oath" required>
+                        <label for="blood-oath">Juro lealdade à RED SKULL e aceito que traição será punida com banimento permanente.</label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-button">Enviar Inscrição</button>
+                        <button type="reset" class="reset-button">Limpar Formulário</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section id="testimonials-full">
+        <div class="container">
+            <h2 class="section-title reveal">Palavras de Nossos Guerreiros</h2>
+            <div class="testimonials-grid reveal">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Aqui, sangue é respeito! Nunca encontrei guerreiros tão dedicados quanto na RED SKULL. Cada batalha é uma oportunidade de provar seu valor, e cada vitória é celebrada como se fosse a última."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-1.jpg" alt="SkullReaper">
+                        </div>
+                        <div class="author-info">
+                            <h3>SkullReaper</h3>
+                            <p>Membro Elite • 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Desde que entrei para a RED SKULL, nunca mais perdi uma batalha. Somos imparáveis! A estratégia e coordenação da guilda são incomparáveis, e o ambiente de camaradagem feroz nos torna mais fortes a cada dia."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-2.jpg" alt="BloodFang">
+                        </div>
+                        <div class="author-info">
+                            <h3>BloodFang</h3>
+                            <p>Campeão PvP • 1 ano</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"A RED SKULL não é apenas uma guilda, é uma família de guerreiros. Aqui você encontra seu lugar na batalha. O processo seletivo é rigoroso, mas vale cada segundo - só os melhores sobrevivem, e é isso que nos torna lendários."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-3.jpg" alt="CrimsonWitch">
+                        </div>
+                        <div class="author-info">
+                            <h3>CrimsonWitch</h3>
+                            <p>Maga de Elite • 3 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Passei por cinco guildas antes de encontrar meu lugar na RED SKULL. A diferença? Aqui não há espaço para mediocridade. Cada membro é excepcional em sua função, e a liderança realmente sabe como extrair o melhor de cada guerreiro."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-4.jpg" alt="IronWolf">
+                        </div>
+                        <div class="author-info">
+                            <h3>IronWolf</h3>
+                            <p>Cavaleiro do Crânio • 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"O ritual de sangue foi o momento mais intenso da minha vida como jogador. Perdi o duelo, mas ganhei o respeito de todos por não desistir. Na RED SKULL, não é sobre ser perfeito - é sobre ter a coragem de enfrentar o impossível."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-5.jpg" alt="ShadowBlade">
+                        </div>
+                        <div class="author-info">
+                            <h3>ShadowBlade</h3>
+                            <p>Assassino • 1 ano</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Entrei como recruta há apenas 3 meses, mas já participei de mais conquistas épicas do que em 2 anos na minha guilda anterior. O nível de organização e dedicação é surreal. Se você busca excelência, não existe lugar melhor."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/member-6.jpg" alt="FrostFang">
+                        </div>
+                        <div class="author-info">
+                            <h3>FrostFang</h3>
+                            <p>Guerreiro • 3 meses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title reveal">Perguntas Frequentes</h2>
+            <div class="faq-container reveal">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Não atendo a todos os requisitos. Ainda posso me candidatar?</h3>
+                        <span class="faq-toggle"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Em casos excepcionais, candidatos que demonstrem potencial extraordinário podem ser considerados mesmo não atendendo a todos os requisitos. No entanto, a barra para esses casos é ainda mais alta. Se você acredita ter algo especial a oferecer, explique detalhadamente em sua inscrição.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quanto tempo leva o processo de seleção?</h3>
+                        <span class="faq-toggle"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O processo completo, da inscrição à aceitação como Recruta, leva em média 2 semanas. O período probatório subsequente dura 30 dias. Todo o processo pode levar até 45 dias para ser concluído.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>O que acontece se eu falhar no Ritual de Sangue?</h3>
+                        <span class="faq-toggle"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O Ritual de Sangue não é sobre vencer ou perder - é sobre demonstrar coragem, determinação e habilidade. Muitos membros respeitados perderam seu duelo, mas impressionaram a todos com sua tenacidade. O importante é dar o seu melhor e nunca desistir.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>A RED SKULL participa de outros jogos além de Grind Hero?</h3>
+                        <span class="faq-toggle"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, temos divisões em outros jogos competitivos, incluindo Crimson Siege, Eternal Conflict e Shadowrealm. No entanto, nosso foco principal continua sendo Grind Hero, onde mantemos nossa posição dominante.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quais são os benefícios de ser um membro da RED SKULL?</h3>
+                        <span class="faq-toggle"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Membros da RED SKULL têm acesso a recursos exclusivos, como estratégias detalhadas para raids, treinamento personalizado com jogadores de elite, prioridade em eventos especiais, acesso ao banco da guilda com itens raros, e a oportunidade de participar das conquistas mais prestigiosas do jogo.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Como funciona a progressão dentro da hierarquia da guilda?</h3>
+                        <span class="faq-toggle"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A progressão é baseada em mérito, dedicação e contribuição para a guilda. Recrutas que completam o período probatório tornam-se Guerreiros. Após demonstrar consistência e excelência por pelo menos 6 meses, podem ser promovidos a Veteranos. Posições de liderança como Capitão de Esquadrão e Cavaleiro do Crânio são concedidas apenas aos mais excepcionais, por indicação direta da liderança.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="join-cta" class="parallax-bg" data-speed="0.3">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Ainda tem dúvidas?</h2>
+                <p>Entre em nosso Discord e converse diretamente com nossos recrutadores.</p>
+                <a href="https://discord.gg/redskull" class="discord-button" target="_blank">Acessar Discord</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <img src="images/red-skull-logo-small.png" alt="RED SKULL">
+                        </div>
+                        <p class="footer-slogan">"Red Skull é guerra, sangue e glória!"</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <span class="social-icon youtube"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitch">
+                                <span class="social-icon twitch"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Discord">
+                                <span class="social-icon discord"></span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <span class="social-icon instagram"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Navegação</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Início</a></li>
+                            <li><a href="about.html">Sobre</a></li>
+                            <li><a href="join.html">Recrutamento</a></li>
+                            <li><a href="achievements.html">Mural de Glórias</a></li>
+                            <li><a href="community.html">Comunidade</a></li>
+                            <li><a href="wiki/wiki_index.html">Wiki</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Recursos</h3>
+                        <ul class="footer-links">
+                            <li><a href="events.html">Calendário</a></li>
+                            <li><a href="gallery.html">Galeria</a></li>
+                            <li><a href="rankings.html">Rankings</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Contato</h3>
+                        <p>Para assuntos oficiais, entre em contato com nossos líderes:</p>
+                        <a href="mailto:contact@redskullguild.com" class="contact-email">contact@redskullguild.com</a>
+                        <div class="donate-container">
+                            <a href="donate.html" class="donate-button">Abasteça a Forja</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">© 2025 RED SKULL Guild. Todos os direitos reservados.</p>
+                <p class="disclaimer">RED SKULL é uma marca registrada de seus respectivos proprietários.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Easter Egg (Clique 3x no crânio) -->
+    <div id="easter-egg" class="hidden">
+        <div class="easter-egg-content">
+            <h3>Código Secreto Desbloqueado!</h3>
+            <div class="secret-code">RS-GLORY-2025</div>
+            <p>Use este código em Grind Hero para receber um item exclusivo!</p>
+            <button id="close-easter-egg">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="background-music" loop>
+        <source src="audio/battle-drums.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound">
+        <source src="audio/sword-clash.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>
