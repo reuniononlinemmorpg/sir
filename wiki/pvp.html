@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-        <style>
+    <style>
         /* Estilos específicos para a página de Sigils */
         .pvp-card {
             background-color: var(--wiki-card-bg);
@@ -26,26 +27,34 @@
             align-items: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .pvp-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(204, 0, 0, 0.15);
         }
+
         .pvp-card img.sigil-icon {
-            width: 80px; /* Ajustar tamanho */
+            width: 80px;
+            /* Ajustar tamanho */
             height: 80px;
             border-radius: 8px;
-            object-fit: contain; /* Para ícones que não são quadrados */
-            background-color: var(--color-grey-dark); /* Placeholder */
+            object-fit: contain;
+            /* Para ícones que não são quadrados */
+            background-color: var(--color-grey-dark);
+            /* Placeholder */
         }
+
         .pvp-info h3 {
             color: var(--wiki-subheading-color);
             margin-top: 0;
             font-size: 1.5rem;
         }
+
         .pvp-info p {
             margin-bottom: 5px;
             font-size: 0.95rem;
         }
+
         .pvp-upgrade-info {
             background-color: var(--wiki-card-bg);
             border: 1px solid var(--wiki-card-border);
@@ -54,15 +63,18 @@
             margin: 30px 0;
             text-align: left;
         }
+
         .pvp-shop-info h2 {
-            margin-top:0;
+            margin-top: 0;
         }
-         .pvp-gallery {
+
+        .pvp-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
+
         .pvp-gallery img {
             width: 100%;
             height: auto;
@@ -70,19 +82,121 @@
             border: 2px solid var(--wiki-border-color);
             transition: transform 0.3s ease;
         }
+
         .pvp-gallery img:hover {
             transform: scale(1.05);
         }
+
         .pvp-info-container {
-        background-color: var(--wiki-card-bg);
-        border: 1px solid var(--wiki-card-border);
-        border-radius: 8px;
-        padding: 25px;
-        margin: 30px 0;
-        text-align: left;
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        /* Sempre mostrar o botão do menu */
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Ícone do menu hambúrguer */
+        .sword-icon::before {
+            content: '☰';
+            font-size: 28px;
+        }
+
+        /* Ocultar o menu por padrão */
+        .main-nav .nav-links {
+            display: none;
+            flex-direction: column;
+            background-color: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            padding: 10px;
+            z-index: 1000;
+            border: 1px solid #333;
+        }
+
+        /* Mostrar o menu quando ativo */
+        .main-nav .nav-links.active {
+            display: flex;
+        }
+
+        .main-footer {
+            background-color: #a09898;
+            color: #ccc;
+            padding: 20px 15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #b41212;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff0000;
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Responsivo para dispositivos menores */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-logo {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
+
 <body class="preload wiki-page-body">
     <div id="preloader">
         <div class="skull-loader">
@@ -151,66 +265,90 @@
             <div class="breadcrumb">
                 <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>PvP</span>
             </div>
-            
-            
+
+
             <article>
                 <div class="pvp-info-container">
                     <h1>Player vs Player (PvP) em Grind Hero</h1>
-                    <p>O combate entre jogadores (PvP) é um dos pilares da experiência em Grind Hero, especialmente nos servidores dedicados a essa modalidade. Prepare-se para testar suas habilidades, estratégias e a força da sua guilda contra outros jogadores em busca de glória e recompensas.</p>
+                    <p>O combate entre jogadores (PvP) é um dos pilares da experiência em Grind Hero, especialmente nos
+                        servidores dedicados a essa modalidade. Prepare-se para testar suas habilidades, estratégias e a
+                        força da sua guilda contra outros jogadores em busca de glória e recompensas.</p>
                 </div>
                 <div class="pvp-info-container">
                     <h2 id="sistema-penalidades">Sistema de Penalidades</h2>
-                    <p> Esse sistema é projetado para desencorajar comportamentos tóxicos e promover um ambiente de jogo mais justo. As penalidades são aplicadas com base no comportamento do jogador em combate, especialmente em relação a outros jogadores.</p>
+                    <p> Esse sistema é projetado para desencorajar comportamentos tóxicos e promover um ambiente de jogo
+                        mais justo. As penalidades são aplicadas com base no comportamento do jogador em combate,
+                        especialmente em relação a outros jogadores.</p>
                     <div class="pvp-gallery">
-                        <img src="../wiki/Imagens/pvp/pvp.png" alt="PvP" class="pvp-image" style="width: 70%; max-width: 800px; margin: 20px auto; display: block;">
+                        <img src="../wiki/Imagens/pvp/pvp.png" alt="PvP" class="pvp-image"
+                            style="width: 70%; max-width: 800px; margin: 20px auto; display: block;">
                     </div>
                 </div>
 
 
                 <div class="pvp-info-container">
                     <h1 id="sistema-penalidades">Skulls</h1>
-                    <p>As ações no PvP têm consequências diretas através do sistema de "Skulls" (Caveiras), que identificam o comportamento recente de um jogador em combate contra outros.</p>
+                    <p>As ações no PvP têm consequências diretas através do sistema de "Skulls" (Caveiras), que
+                        identificam o comportamento recente de um jogador em combate contra outros.</p>
                     <ul>
-                    
-                    <div class="pvp-card">
-                        <img src="../wiki/Imagens/pvp/icon_white_skull.png" alt="White Skull" class="skull-icons" style="width: 10%; max-width: 800px; margin-right: 5px; display: inline-block;">
-                        <div class="pvp-info">
-                            <h3>White Skull </h3>
-                            <li><strong>White Skull (Caveira Branca):</strong> Geralmente indica um jogador que se defendeu de um agressor ou participou de um combate PvP consentido (como guerras de guildas). Jogadores com White Skull podem ser atacados por outros sem que estes recebam penalidades severas.</li>
-                        </div>
-                    </div>
-                            
-                    <div class="pvp-card">
-                        <img src="../wiki/Imagens/pvp/icon_red_skull.png" alt="Red Skull" class="skull-icons" style="width: 10%; max-width: 800px; margin-right: 5px; display: inline-block;">
-                        <div class="pvp-info">
-                            <h3>Red Skull </h3>
-                            <li><strong>Red Skull (Caveira Vermelha):</strong> Designa um jogador que atacou e/ou matou outro jogador inocente (sem White Skull ou que não revidou). Jogadores com Red Skull são alvos livres para todos e, ao serem derrotados, podem sofrer penalidades mais severas, como perda maior de experiência ou itens. Acumular múltiplas mortes de inocentes pode intensificar o status de Red Skull.</li>
-                        </div>
-                    </div>
 
-                    <div class="pvp-card">
-                        <img src="../wiki/Imagens/pvp/icon_black_skull.png" alt="Black Skull" class="skull-icons" style="width: 10%; max-width: 800px; margin-right: 5px; display: inline-block;" class="pvp-icon">
-                        <div class="pvp-info">
-                            <h3>Black Skull </h3>
-                            <li><strong>Black Skull (Caveira Negra):</strong> O nível mais alto de penalidade, reservado para jogadores que persistentemente matam inocentes e acumulam um grande número de Red Skulls. Jogadores com Black Skull enfrentam as penalidades mais drásticas ao serem derrotados e podem ser banidos de certas áreas ou interações.</li>                            
+                        <div class="pvp-card">
+                            <img src="../wiki/Imagens/pvp/icon_white_skull.png" alt="White Skull" class="skull-icons"
+                                style="width: 10%; max-width: 800px; margin-right: 5px; display: inline-block;">
+                            <div class="pvp-info">
+                                <h3>White Skull </h3>
+                                <li><strong>White Skull (Caveira Branca):</strong> Geralmente indica um jogador que se
+                                    defendeu de um agressor ou participou de um combate PvP consentido (como guerras de
+                                    guildas). Jogadores com White Skull podem ser atacados por outros sem que estes
+                                    recebam penalidades severas.</li>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="pvp-card">
+                            <img src="../wiki/Imagens/pvp/icon_red_skull.png" alt="Red Skull" class="skull-icons"
+                                style="width: 10%; max-width: 800px; margin-right: 5px; display: inline-block;">
+                            <div class="pvp-info">
+                                <h3>Red Skull </h3>
+                                <li><strong>Red Skull (Caveira Vermelha):</strong> Designa um jogador que atacou e/ou
+                                    matou outro jogador inocente (sem White Skull ou que não revidou). Jogadores com Red
+                                    Skull são alvos livres para todos e, ao serem derrotados, podem sofrer penalidades
+                                    mais severas, como perda maior de experiência ou itens. Acumular múltiplas mortes de
+                                    inocentes pode intensificar o status de Red Skull.</li>
+                            </div>
+                        </div>
+
+                        <div class="pvp-card">
+                            <img src="../wiki/Imagens/pvp/icon_black_skull.png" alt="Black Skull" class="skull-icons"
+                                style="width: 10%; max-width: 800px; margin-right: 5px; display: inline-block;"
+                                class="pvp-icon">
+                            <div class="pvp-info">
+                                <h3>Black Skull </h3>
+                                <li><strong>Black Skull (Caveira Negra):</strong> O nível mais alto de penalidade,
+                                    reservado para jogadores que persistentemente matam inocentes e acumulam um grande
+                                    número de Red Skulls. Jogadores com Black Skull enfrentam as penalidades mais
+                                    drásticas ao serem derrotados e podem ser banidos de certas áreas ou interações.
+                                </li>
+                            </div>
+                        </div>
                 </div>
                 </ul>
-                <p><em>Mais detalhes sobre a duração de cada Skull, as condições exatas para obtê-las e as penalidades específicas associadas serão adicionados conforme o jogo se desenvolve.</em></p>
+                <p><em>Mais detalhes sobre a duração de cada Skull, as condições exatas para obtê-las e as penalidades
+                        específicas associadas serão adicionados conforme o jogo se desenvolve.</em></p>
 
-                
+
                 <div class="pvp-upgrade-info">
                     <h3>Modos de PvP (Em Breve)</h3>
-                    <p>Além do PvP aberto em servidores dedicados, Grind Hero poderá apresentar outros modos de combate entre jogadores, como:</p>
+                    <p>Além do PvP aberto em servidores dedicados, Grind Hero poderá apresentar outros modos de combate
+                        entre jogadores, como:</p>
                     <ul>
                         <li>Arenas</li>
                         <li>Campos de Batalha (Battlegrounds)</li>
                         <li>Guerras de Guildas (Guild Wars)</li>
                         <li>Eventos PvP Especiais</li>
                     </ul>
-                    <p>Fique atento para mais informações sobre como esses modos funcionarão e quais recompensas estarão em jogo.</p>
-                </div>    
+                    <p>Fique atento para mais informações sobre como esses modos funcionarão e quais recompensas estarão
+                        em jogo.</p>
+                </div>
             </article>
 
         </section>
@@ -244,13 +382,21 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
 
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
     <script src="../js/main.js" defer></script>
     <script src="../js/animations.js" defer></script>
     <script src="js/wiki_interactive.js" defer></script>
     <script src="../js/ux-improvements.js" defer></script>
     <script src="../js/mobile-menu.js" defer></script>
 </body>
+
 </html>
-
-

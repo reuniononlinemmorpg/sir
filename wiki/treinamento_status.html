@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <style>
-        .attribute-card, .pet-card {
+        .attribute-card,
+        .pet-card {
             background-color: var(--wiki-card-bg);
             border: 1px solid var(--wiki-card-border);
             border-radius: 8px;
@@ -22,32 +24,46 @@
             margin-bottom: 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .attribute-card:hover, .pet-card:hover {
+
+        .attribute-card:hover,
+        .pet-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(204, 0, 0, 0.15);
         }
-        .attribute-card h3, .pet-card h3 {
+
+        .attribute-card h3,
+        .pet-card h3 {
             color: var(--wiki-subheading-color);
             margin-top: 0;
         }
-        .comparison-table, .pets-table {
+
+        .comparison-table,
+        .pets-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             margin-bottom: 20px;
         }
-        .comparison-table th, .comparison-table td, .pets-table th, .pets-table td {
+
+        .comparison-table th,
+        .comparison-table td,
+        .pets-table th,
+        .pets-table td {
             border: 1px solid var(--wiki-border-color);
             padding: 12px;
             text-align: left;
             color: var(--wiki-text-color);
         }
-        .comparison-table th, .pets-table th {
+
+        .comparison-table th,
+        .pets-table th {
             background-color: var(--wiki-sidebar-bg);
             color: var(--wiki-heading-color);
             font-family: 'Anton', sans-serif;
         }
-        .interactive-calculator, .training-flow-diagram {
+
+        .interactive-calculator,
+        .training-flow-diagram {
             background-color: var(--wiki-card-bg);
             border: 1px solid var(--wiki-card-border);
             border-radius: 8px;
@@ -55,29 +71,34 @@
             margin: 30px 0;
             text-align: center;
         }
+
         .interactive-calculator label {
             display: block;
             margin-bottom: 8px;
             color: var(--wiki-text-color);
             font-weight: bold;
         }
+
         .interactive-calculator input[type="range"],
         .interactive-calculator input[type="number"] {
             width: 80%;
             margin-bottom: 15px;
         }
+
         .interactive-calculator .result {
             font-size: 1.2rem;
             font-weight: bold;
             color: var(--wiki-heading-color);
             margin-top: 15px;
         }
+
         .tooltip {
             position: relative;
             display: inline-block;
             border-bottom: 1px dotted var(--wiki-text-color-muted);
             cursor: help;
         }
+
         .tooltip .tooltiptext {
             visibility: hidden;
             width: 250px;
@@ -96,6 +117,7 @@
             font-size: 0.9rem;
             border: 1px solid var(--color-red-primary);
         }
+
         .tooltip .tooltiptext::after {
             content: "";
             position: absolute;
@@ -106,16 +128,19 @@
             border-style: solid;
             border-color: var(--color-red-primary) transparent transparent transparent;
         }
+
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
         }
+
         .attribute-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
+
         .attribute-gallery img {
             width: 100%;
             height: auto;
@@ -123,19 +148,121 @@
             border: 2px solid var(--wiki-border-color);
             transition: transform 0.3s ease;
         }
+
         .attribute-gallery img:hover {
             transform: scale(1.05);
         }
+
         .attribute-info-container {
-        background-color: var(--wiki-card-bg);
-        border: 1px solid var(--wiki-card-border);
-        border-radius: 8px;
-        padding: 25px;
-        margin: 30px 0;
-        text-align: left;
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        /* Sempre mostrar o botão do menu */
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Ícone do menu hambúrguer */
+        .sword-icon::before {
+            content: '☰';
+            font-size: 28px;
+        }
+
+        /* Ocultar o menu por padrão */
+        .main-nav .nav-links {
+            display: none;
+            flex-direction: column;
+            background-color: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            padding: 10px;
+            z-index: 1000;
+            border: 1px solid #333;
+        }
+
+        /* Mostrar o menu quando ativo */
+        .main-nav .nav-links.active {
+            display: flex;
+        }
+
+        .main-footer {
+            background-color: #a09898;
+            color: #ccc;
+            padding: 20px 15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #b41212;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff0000;
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Responsivo para dispositivos menores */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-logo {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
+
 <body class="preload wiki-page-body">
     <div id="preloader">
         <div class="skull-loader">
@@ -183,7 +310,7 @@
                     <li><a href="servidores.html">Servidores</a></li>
                     <li><a href="dicas_tutoriais.html">Dicas e Tutoriais</a></li>
                     <li class="sidebar-category">Classes e Treinamento</li>
-                    <li><a href="classes.html">Classes</a></li>                    
+                    <li><a href="classes.html">Classes</a></li>
                     <li><a href="treinamento_status.html" class="active-wiki-link">Treinamento e Status</a></li>
                     <li class="sidebar-category">Conteúdo do Jogo</li>
                     <li><a href="mapas.html">Mapas e Regiões</a></li>
@@ -201,9 +328,10 @@
 
         <section id="wiki-main-content">
             <div class="breadcrumb">
-                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Treinamento e Status</span>
+                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Treinamento e
+                    Status</span>
             </div>
-                        
+
             <!-- Busca e navegação rápida -->
             <div class="wiki-search-bar-container">
                 <form class="wiki-search-form" action="search-results.html" method="get">
@@ -214,18 +342,23 @@
 
             <div class="attribute-info-container">
                 <h1 class="page-title">Sistema de Treinamento e Status</h1>
-                <p>O coração de Grind Hero é seu revolucionário sistema de treinamento contínuo. Diferente de outros MMORPGs onde você só progride enquanto joga, em Grind Hero seu personagem continua evoluindo mesmo quando você está offline!</p>
+                <p>O coração de Grind Hero é seu revolucionário sistema de treinamento contínuo. Diferente de outros
+                    MMORPGs onde você só progride enquanto joga, em Grind Hero seu personagem continua evoluindo mesmo
+                    quando você está offline!</p>
 
                 <div class="training-flow-diagram">
                     <h2>Fluxo de Treinamento (Ilustração Animada Placeholder)</h2>
-                    <img src="../images/placeholder_training_flow.png" alt="Diagrama do Fluxo de Treinamento" style="max-width:100%; height:auto; border-radius: 5px;">
-                    <p><em>(Aqui entraria uma ilustração animada ou diagrama interativo do sistema de treinamento)</em></p>
+                    <img src="./Imagens/treino/treino.png" alt="Diagrama do Fluxo de Treinamento"
+                        style="max-width:100%; height:auto; border-radius: 5px;">
+                    <p><em>(Aqui entraria uma ilustração animada ou diagrama interativo do sistema de treinamento)</em>
+                    </p>
                 </div>
             </div>
             <div class="attribute-info-container">
                 <h2>Como Funciona o Treinamento</h2>
-                <p>Seu personagem ganha experiência e aprimora atributos através de ações no jogo e também através do sistema de treino AFK (Ausente do Teclado).</p>
-                
+                <p>Seu personagem ganha experiência e aprimora atributos através de ações no jogo e também através do
+                    sistema de treino AFK (Ausente do Teclado).</p>
+
                 <div class="interactive-calculator">
                     <h3>Calculadora Interativa de Progresso (Exemplo)</h3>
                     <label for="current-level">Nível Atual:</label>
@@ -233,7 +366,8 @@
                     <label for="training-hours">Horas de Treino AFK:</label>
                     <input type="range" id="training-hours" min="1" max="24" value="8">
                     <span id="training-hours-value">8 horas</span>
-                    <div class="result">Progresso Estimado: Nível <span id="estimated-level">--</span> (<span id="xp-gain">--</span> XP)</div>
+                    <div class="result">Progresso Estimado: Nível <span id="estimated-level">--</span> (<span
+                            id="xp-gain">--</span> XP)</div>
                     <p><em>(Esta é uma representação conceitual. A lógica real dependerá das fórmulas do jogo.)</em></p>
                 </div>
             </div>
@@ -257,37 +391,59 @@
                         <tr>
                             <td><strong>Treinamento AFK (Offline)</strong></td>
                             <td>Progresso contínuo 24/7, mesmo offline.</td>
-                            <td>Ganho de experiência 6x menor que o online. Limite máximo de 24 horas de treinamento acumulado. Requer Gemas (1 Gema = 1 hora). Personagem fica visível no mundo.</td>
+                            <td>Ganho de experiência 6x menor que o online. Limite máximo de 24 horas de treinamento
+                                acumulado. Requer Gemas (1 Gema = 1 hora). Personagem fica visível no mundo.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            
+
             <div class="attribute-info-container">
                 <h2>Atributos Treináveis</h2>
-                <p>Em Grind Hero, os personagens evoluem suas habilidades por meio de prática e experiência. Cada ação realizada pelo jogador contribui para o aprimoramento de um atributo específico.</p>
-                
+                <p>Em Grind Hero, os personagens evoluem suas habilidades por meio de prática e experiência. Cada ação
+                    realizada pelo jogador contribui para o aprimoramento de um atributo específico.</p>
+
                 <div class="attribute-card">
-                    <h3><span class="tooltip">⚔️ Melee (Corpo a Corpo)<span class="tooltiptext">Habilidade em combate corpo a corpo. Aumenta o dano com armas de curta distância. Treinado com ataques básicos de classes melee.</span></span></h3>
-                    <p>Representa a habilidade do personagem em combate corpo a corpo. Treinável apenas por classes melee, quanto maior for seu nível, mais forte será o dano causado com armas de curta distância. O treinamento ocorre ao realizar ataques básicos contra monstros.</p>
+                    <h3><span class="tooltip">⚔️ Melee (Corpo a Corpo)<span class="tooltiptext">Habilidade em combate
+                                corpo a corpo. Aumenta o dano com armas de curta distância. Treinado com ataques básicos
+                                de classes melee.</span></span></h3>
+                    <p>Representa a habilidade do personagem em combate corpo a corpo. Treinável apenas por classes
+                        melee, quanto maior for seu nível, mais forte será o dano causado com armas de curta distância.
+                        O treinamento ocorre ao realizar ataques básicos contra monstros.</p>
                 </div>
                 <div class="attribute-card">
-                    <h3><span class="tooltip">🛡️ Shielding (Escudaria)<span class="tooltiptext">Capacidade de defesa com escudo. Aumenta a eficácia ao bloquear e reduz o dano recebido. Treinado ao bloquear golpes e atacar.</span></span></h3>
-                    <p>Define a capacidade do personagem de se defender utilizando um escudo. Quanto mais desenvolvido, maior a eficácia ao bloquear golpes. O treinamento ocorre quando o personagem bloqueia dano de um monstro, desde que tenha atacado o monstro recentemente.</p>
+                    <h3><span class="tooltip">🛡️ Shielding (Escudaria)<span class="tooltiptext">Capacidade de defesa
+                                com escudo. Aumenta a eficácia ao bloquear e reduz o dano recebido. Treinado ao bloquear
+                                golpes e atacar.</span></span></h3>
+                    <p>Define a capacidade do personagem de se defender utilizando um escudo. Quanto mais desenvolvido,
+                        maior a eficácia ao bloquear golpes. O treinamento ocorre quando o personagem bloqueia dano de
+                        um monstro, desde que tenha atacado o monstro recentemente.</p>
                 </div>
                 <div class="attribute-card">
-                    <h3><span class="tooltip">🏹 Distance (Distância)<span class="tooltiptext">Precisão e dano com armas de longo alcance. Influenciado pela distância do alvo (ideal 4-5 unidades, chance máx. 90%). Treinado com ataques básicos de armas de longo alcance.</span></span></h3>
-                    <p>Influencia a precisão e o dano dos ataques realizados com armas de longo alcance. A mecânica de precisão depende da distância ideal (4-5 unidades), com chance máxima de acerto de 90% (pode aumentar com itens). O treinamento ocorre ao utilizar ataques básicos contra monstros.</p>
+                    <h3><span class="tooltip">🏹 Distance (Distância)<span class="tooltiptext">Precisão e dano com armas
+                                de longo alcance. Influenciado pela distância do alvo (ideal 4-5 unidades, chance máx.
+                                90%). Treinado com ataques básicos de armas de longo alcance.</span></span></h3>
+                    <p>Influencia a precisão e o dano dos ataques realizados com armas de longo alcance. A mecânica de
+                        precisão depende da distância ideal (4-5 unidades), com chance máxima de acerto de 90% (pode
+                        aumentar com itens). O treinamento ocorre ao utilizar ataques básicos contra monstros.</p>
                 </div>
                 <div class="attribute-card">
-                    <h3><span class="tooltip">🔥 Magic (Magia)<span class="tooltiptext">Domínio sobre artes arcanas. Magias ignoram defesas convencionais. Treinamento mais lento, ocorre com ataques básicos de armas mágicas e consome mana.</span></span></h3>
-                    <p>Representa o domínio do personagem sobre as artes arcanas. Magias ignoram defesas convencionais. O treinamento de Magic é mais lento e ocorre ao utilizar ataques básicos contra monstros com armas mágicas, consumindo mana.</p>
+                    <h3><span class="tooltip">🔥 Magic (Magia)<span class="tooltiptext">Domínio sobre artes arcanas.
+                                Magias ignoram defesas convencionais. Treinamento mais lento, ocorre com ataques básicos
+                                de armas mágicas e consome mana.</span></span></h3>
+                    <p>Representa o domínio do personagem sobre as artes arcanas. Magias ignoram defesas convencionais.
+                        O treinamento de Magic é mais lento e ocorre ao utilizar ataques básicos contra monstros com
+                        armas mágicas, consumindo mana.</p>
                 </div>
                 <div class="attribute-card">
-                    <h3><span class="tooltip">🐺 Taming (Adestramento)<span class="tooltiptext">Desempenho dos pets em combate. Aumenta o dano do pet e eficácia de buffs. Treinado passivamente enquanto o pet ataca.</span></span></h3>
-                    <p>Está diretamente ligado ao desempenho dos pets em combate. Quanto maior o nível de Taming, maior será o dano causado pelo pet e a eficácia de seus buffs passivos. O treinamento acontece de forma passiva enquanto o jogador está acompanhado de um pet que participa do combate.</p>
+                    <h3><span class="tooltip">🐺 Taming (Adestramento)<span class="tooltiptext">Desempenho dos pets em
+                                combate. Aumenta o dano do pet e eficácia de buffs. Treinado passivamente enquanto o pet
+                                ataca.</span></span></h3>
+                    <p>Está diretamente ligado ao desempenho dos pets em combate. Quanto maior o nível de Taming, maior
+                        será o dano causado pelo pet e a eficácia de seus buffs passivos. O treinamento acontece de
+                        forma passiva enquanto o jogador está acompanhado de um pet que participa do combate.</p>
                 </div>
-            </div> 
+            </div>
             <div class="attribute-info-container">
                 <h2>Atributos de Evolução Automática</h2>
                 <p>Alguns aspectos do personagem evoluem automaticamente conforme ele sobe de nível:</p>
@@ -296,15 +452,15 @@
                     <li><strong>Max MP:</strong> Reserva de mana para magias.</li>
                     <li><strong>Max SP:</strong> Energia/stamina para esquiva.</li>
                     <li><strong>Velocidade de Movimento:</strong> Rapidez de deslocamento.</li>
-                </ul>                
-            </div>  
-            
+                </ul>
+            </div>
+
             <div class="wiki-feedback-section">
                 <p>Esta página foi útil?</p>
                 <button class="feedback-yes">Sim</button>
                 <button class="feedback-no">Não</button>
             </div>
-             
+
         </section>
     </main>
 
@@ -313,7 +469,7 @@
         <button id="font-increase-button">A+</button>
         <button id="font-decrease-button">A-</button>
     </div>
-    
+
     <footer id="main-footer">
         <div class="footer-container">
             <div class="footer-logo">
@@ -338,6 +494,16 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
     <script src="../js/main.js" defer></script>
     <script src="../js/animations.js" defer></script>
     <script src="js/wiki_interactive.js" defer></script>
@@ -350,44 +516,42 @@
             const trainingHoursValue = document.getElementById("training-hours-value");
             const estimatedLevelEl = document.getElementById("estimated-level");
             const xpGainEl = document.getElementById("xp-gain");
-            
+
             // Função para atualizar a calculadora
             const updateCalculator = () => {
                 const currentLevel = parseInt(currentLevelInput.value);
                 const trainingHours = parseInt(trainingHoursInput.value);
-                
+
                 trainingHoursValue.textContent = `${trainingHours} horas`;
-                
+
                 // Fórmula simples para demonstração
                 const baseXpPerHour = 100 * Math.pow(1.1, currentLevel);
                 const totalXpGain = Math.floor(baseXpPerHour * trainingHours / 6); // AFK é 6x mais lento
-                
+
                 // Estimar novo nível (fórmula simplificada)
                 let xpForNextLevel = 500 * Math.pow(1.5, currentLevel - 1);
                 let remainingXp = totalXpGain;
                 let newLevel = currentLevel;
-                
+
                 while (remainingXp >= xpForNextLevel) {
                     remainingXp -= xpForNextLevel;
                     newLevel++;
                     xpForNextLevel = 500 * Math.pow(1.5, newLevel - 1);
                 }
-                
+
                 estimatedLevelEl.textContent = newLevel + (remainingXp > 0 ? ` (${Math.floor(remainingXp * 100 / xpForNextLevel)}%)` : "");
                 xpGainEl.textContent = totalXpGain.toLocaleString();
             };
-            
+
             // Inicializar e configurar eventos
             if (currentLevelInput && trainingHoursInput) {
                 updateCalculator();
-                
+
                 currentLevelInput.addEventListener("input", updateCalculator);
                 trainingHoursInput.addEventListener("input", updateCalculator);
             }
         });
     </script>
 </body>
+
 </html>
-
-
-

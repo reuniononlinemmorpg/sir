@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +24,12 @@
             margin-bottom: 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .map-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(204, 0, 0, 0.15);
         }
+
         .map-card h2 {
             color: var(--wiki-heading-color);
             margin-top: 0;
@@ -34,44 +37,53 @@
             padding-bottom: 10px;
             margin-bottom: 15px;
         }
+
         .map-image-container {
             margin: 20px 0;
             text-align: center;
         }
+
         .map-image-container img {
             max-width: 100%;
             border-radius: 8px;
             border: 1px solid var(--wiki-card-border);
         }
+
         .map-features {
             margin-top: 15px;
         }
+
         .map-features h3 {
             color: var(--wiki-subheading-color);
             margin-bottom: 10px;
         }
+
         .region-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
+
         .region-item {
             background-color: rgba(0, 0, 0, 0.2);
             padding: 15px;
             border-radius: 8px;
             border-left: 3px solid var(--color-red-primary);
         }
+
         .region-item h4 {
             margin-top: 0;
             color: var(--wiki-subheading-color);
         }
+
         .mapa-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
+
         .mapa-gallery img {
             width: 100%;
             height: auto;
@@ -79,19 +91,121 @@
             border: 2px solid var(--wiki-border-color);
             transition: transform 0.3s ease;
         }
+
         .mapa-gallery img:hover {
             transform: scale(1.05);
         }
+
         .mapa-info-container {
-        background-color: var(--wiki-card-bg);
-        border: 1px solid var(--wiki-card-border);
-        border-radius: 8px;
-        padding: 25px;
-        margin: 30px 0;
-        text-align: left;
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        /* Sempre mostrar o botão do menu */
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Ícone do menu hambúrguer */
+        .sword-icon::before {
+            content: '☰';
+            font-size: 28px;
+        }
+
+        /* Ocultar o menu por padrão */
+        .main-nav .nav-links {
+            display: none;
+            flex-direction: column;
+            background-color: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            padding: 10px;
+            z-index: 1000;
+            border: 1px solid #333;
+        }
+
+        /* Mostrar o menu quando ativo */
+        .main-nav .nav-links.active {
+            display: flex;
+        }
+
+        .main-footer {
+            background-color: #a09898;
+            color: #ccc;
+            padding: 20px 15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #b41212;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff0000;
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Responsivo para dispositivos menores */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-logo {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
+
 <body class="preload wiki-page-body">
     <div id="preloader">
         <div class="skull-loader">
@@ -158,9 +272,10 @@
 
         <section id="wiki-main-content">
             <div class="breadcrumb">
-                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Mapas e Regiões</span>
+                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Mapas e
+                    Regiões</span>
             </div>
-           <!-- Busca e navegação rápida -->
+            <!-- Busca e navegação rápida -->
             <div class="wiki-search-bar-container">
                 <form class="wiki-search-form" action="search-results.html" method="get">
                     <input type="text" id="wiki-search-bar" name="q" placeholder="Buscar na wiki..." autocomplete="off">
@@ -170,17 +285,21 @@
 
             <div class="mapa-info-container">
                 <h1 class="page-title">Mapas e Regiões de Grind Hero</h1>
-                <p>O mundo de Grind Hero é vasto e repleto de locais para explorar. Esta página detalha os diferentes mapas, regiões e dungeons que você encontrará durante suas aventuras. Cada área possui seus próprios desafios, inimigos, recursos e segredos para descobrir.</p>
+                <p>O mundo de Grind Hero é vasto e repleto de locais para explorar. Esta página detalha os diferentes
+                    mapas, regiões e dungeons que você encontrará durante suas aventuras. Cada área possui seus próprios
+                    desafios, inimigos, recursos e segredos para descobrir.</p>
             </div>
 
             <div class="map-card">
                 <h2>Ilha Rukora</h2>
-                <p>O jogador iniciará sua jornada na ilha Rukora, especificamente na Vila Elfhein, esta vila era reino dos grandes elfos enquanto eles ainda viviam entre os humanos antes de partirem para sua última grande jornada.</p>
-                
+                <p>O jogador iniciará sua jornada na ilha Rukora, especificamente na Vila Elfhein, esta vila era reino
+                    dos grandes elfos enquanto eles ainda viviam entre os humanos antes de partirem para sua última
+                    grande jornada.</p>
+
                 <div class="map-image-container">
                     <p><em>Mapa inicial da Ilha Rukora.</em></p>
                     <img src="../wiki/Imagens/mapas/ILHA RUKORA Full map.png" alt="Mapa da Ilha Rukora">
-                    <p> </p>    
+                    <p> </p>
                     <p><em>Mapa da Vila Elfhein.</em></p>
                     <p>Hoje a vila serve como abrigo e base para os novos recrutas que estão em treinamento.</p>
                     <img src="../wiki/Imagens/mapas/ILHA RUKORA.png" alt="Mapa da Ilha Rukora">
@@ -189,30 +308,38 @@
                 <div class="map-features">
                     <h3>Características Principais</h3>
                     <ul>
-                        <li><strong>Clima:</strong> Temperado, com florestas densas, pequenas planícies e regiões costeiras</li>
+                        <li><strong>Clima:</strong> Temperado, com florestas densas, pequenas planícies e regiões
+                            costeiras</li>
                         <li><strong>Nível Recomendado:</strong> 1-20</li>
                         <li><strong>Zonas de Proteção:</strong> Sim, principalmente em Vila Elfhein</li>
                     </ul>
                 </div>
-                
+
                 <div class="region-list">
                     <div class="region-item">
                         <h4>Vila Elfhein</h4>
-                        <p>O ponto central da ilha é um antigo vilarejo élfico, onde os jogadores iniciam sua aventura. No passado, esse lugar foi o coração do reino dos grandes elfos, que dominaram a ilha por séculos antes de partirem em sua última e misteriosa jornada. Hoje, as construções antigas ainda guardam vestígios de magia, e o vilarejo foi transformado em abrigo e base de treinamento para os novos recrutas que chegam à ilha em busca de glória e conhecimento.</p>
-                        <p><strong>Recursos:</strong> NPCs comerciantes, banco, quests iniciais, área segura de Protection Zone</p>
+                        <p>O ponto central da ilha é um antigo vilarejo élfico, onde os jogadores iniciam sua aventura.
+                            No passado, esse lugar foi o coração do reino dos grandes elfos, que dominaram a ilha por
+                            séculos antes de partirem em sua última e misteriosa jornada. Hoje, as construções antigas
+                            ainda guardam vestígios de magia, e o vilarejo foi transformado em abrigo e base de
+                            treinamento para os novos recrutas que chegam à ilha em busca de glória e conhecimento.</p>
+                        <p><strong>Recursos:</strong> NPCs comerciantes, banco, quests iniciais, área segura de
+                            Protection Zone</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="map-card">
                 <h2>Rat Cave (Caverna dos Ratos)</h2>
-                <p>Esta caverna gigante é a primeira área de exploração subterrânea que os jogadores encontram. Ideal para aventureiros iniciantes, a Rat Cave oferece uma excelente introdução às mecânicas de exploração de dungeons do jogo.</p>
-                
+                <p>Esta caverna gigante é a primeira área de exploração subterrânea que os jogadores encontram. Ideal
+                    para aventureiros iniciantes, a Rat Cave oferece uma excelente introdução às mecânicas de exploração
+                    de dungeons do jogo.</p>
+
                 <div class="map-image-container">
                     <p><em>Mapa em desenvolvimento.</em></p>
                     <img src="../wiki/Imagens/mapas/Rat_cave_full_map.png" alt="Mapa da Rat Cave">
                 </div>
-                
+
                 <div class="map-features">
                     <h3>Características Principais</h3>
                     <ul>
@@ -222,19 +349,26 @@
                         <li><strong>Zonas de Proteção:</strong> Não </li>
                     </ul>
                 </div>
-                
+
                 <div class="region-list">
                     <div class="region-item">
                         <h4>Primeiro Andar</h4>
-                        <p>O andar mais acessível da Rat Cave é um labirinto úmido e mal iluminado, habitado por ratos de diferentes tamanhos e outros pequenos monstros das profundezas. Outrora parte de um antigo sistema de escoamento abandonado, o local agora serve como campo de prova para aventureiros iniciantes. Baús enferrujados e escondidos entre os escombros guardam itens básicos, ideais para quem está dando os primeiros passos em sua jornada.</p>
+                        <p>O andar mais acessível da Rat Cave é um labirinto úmido e mal iluminado, habitado por ratos
+                            de diferentes tamanhos e outros pequenos monstros das profundezas. Outrora parte de um
+                            antigo sistema de escoamento abandonado, o local agora serve como campo de prova para
+                            aventureiros iniciantes. Baús enferrujados e escondidos entre os escombros guardam itens
+                            básicos, ideais para quem está dando os primeiros passos em sua jornada.</p>
                         <p><strong>Inimigos comuns:</strong> Ratos pequenos, ratos grandes, insetos cavernícolas</p>
-                        <p><strong>Recursos:</strong> Couro de rato, dentes de rato, cristais pequenos, itens básicos em baús</p>
+                        <p><strong>Recursos:</strong> Couro de rato, dentes de rato, cristais pequenos, itens básicos em
+                            baús</p>
                     </div>
                 </div>
             </div>
-            
-            <p><em>Nota: O mundo de Grind Hero está em constante expansão. Novas áreas, cavernas, dungeons e regiões serão adicionadas regularmente. Volte a esta página para descobrir os novos territórios à medida que forem lançados!</em></p>
-            
+
+            <p><em>Nota: O mundo de Grind Hero está em constante expansão. Novas áreas, cavernas, dungeons e regiões
+                    serão adicionadas regularmente. Volte a esta página para descobrir os novos territórios à medida que
+                    forem lançados!</em></p>
+
             <div class="wiki-feedback-section">
                 <p>Esta página foi útil?</p>
                 <button class="feedback-yes">Sim</button>
@@ -273,11 +407,21 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
     <script src="../js/main.js" defer></script>
     <script src="../js/animations.js" defer></script>
     <script src="js/wiki_interactive.js" defer></script>
     <script src="../js/ux-improvements.js" defer></script>
     <script src="../js/mobile-menu.js" defer></script>
 </body>
-</html> 
 
+</html>

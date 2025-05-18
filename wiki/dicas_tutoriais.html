@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,8 +24,108 @@
             text-align: left;
             font-size: 1.2em;
         }
+
+        /* Sempre mostrar o botão do menu */
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Ícone do menu hambúrguer */
+        .sword-icon::before {
+            content: '☰';
+            font-size: 28px;
+        }
+
+        /* Ocultar o menu por padrão */
+        .main-nav .nav-links {
+            display: none;
+            flex-direction: column;
+            background-color: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            padding: 10px;
+            z-index: 1000;
+            border: 1px solid #333;
+        }
+
+        /* Mostrar o menu quando ativo */
+        .main-nav .nav-links.active {
+            display: flex;
+        }
+
+        .main-footer {
+            background-color: #a09898;
+            color: #ccc;
+            padding: 20px 15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #b41212;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff0000;
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Responsivo para dispositivos menores */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-logo {
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
+
 <body class="preload wiki-page-body">
     <div id="preloader">
         <div class="skull-loader">
@@ -91,9 +192,10 @@
 
         <section id="wiki-main-content">
             <div class="breadcrumb">
-                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Dicas e Tutoriais</span>
+                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Dicas e
+                    Tutoriais</span>
             </div>
-            
+
             <!-- Busca e navegação rápida -->
             <div class="wiki-search-bar-container">
                 <form class="wiki-search-form" action="search-results.html" method="get">
@@ -101,28 +203,40 @@
                     <button type="submit" id="wiki-search-button">Buscar</button>
                 </form>
             </div>
-            
+
             <article>
                 <div class="dicas-info-container">
                     <h1>Dicas e Tutoriais para Grind Hero</h1>
-                    <p>Bem-vindo à seção de Dicas e Tutoriais da wiki de Grind Hero! Aqui você encontrará conselhos valiosos, estratégias e guias passo a passo para ajudá-lo a otimizar sua jornada, desde os primeiros passos até os desafios mais avançados do jogo.</p>
-                    
-                    <p><em>Esta seção está em constante atualização. Novas dicas e tutoriais serão adicionados regularmente pela comunidade e pelos desenvolvedores.</em></p>
+                    <p>Bem-vindo à seção de Dicas e Tutoriais da wiki de Grind Hero! Aqui você encontrará conselhos
+                        valiosos, estratégias e guias passo a passo para ajudá-lo a otimizar sua jornada, desde os
+                        primeiros passos até os desafios mais avançados do jogo.</p>
+
+                    <p><em>Esta seção está em constante atualização. Novas dicas e tutoriais serão adicionados
+                            regularmente pela comunidade e pelos desenvolvedores.</em></p>
                 </div>
                 <div class="dicas-info-container">
                     <h2>Tópicos em Destaque (Em Breve)</h2>
                     <p>Aguarde guias sobre:</p>
                     <ul>
-                        <li><strong>Guia para Iniciantes:</strong> Seus primeiros passos em Grind Hero, o que fazer, onde ir.</li>
-                        <li><strong>Otimização de Progressão (Leveling):</strong> Como subir de nível de forma eficiente.</li>
-                        <li><strong>Estratégias de Combate:</strong> Dicas para diferentes classes e situações de PvP e PvE.</li>
-                        <li><strong>Guia de Economia:</strong> Como fazer dinheiro, melhores práticas de comércio e investimento.</li>
-                        <li><strong>Exploração Eficiente:</strong> Como encontrar segredos, recursos raros e áreas escondidas.</li>
-                        <li><strong>Guias de Chefes (Bosses):</strong> Estratégias para derrotar os chefes mais desafiadores.</li>
-                        <li><strong>Construção de Personagem (Builds):</strong> Sugestões de builds para diferentes classes e estilos de jogo.</li>
-                        <li><strong>Dicas para Guildas:</strong> Como gerenciar uma guilda, recrutar membros e ter sucesso em Guerras de Guildas.</li>
+                        <li><strong>Guia para Iniciantes:</strong> Seus primeiros passos em Grind Hero, o que fazer,
+                            onde ir.</li>
+                        <li><strong>Otimização de Progressão (Leveling):</strong> Como subir de nível de forma
+                            eficiente.</li>
+                        <li><strong>Estratégias de Combate:</strong> Dicas para diferentes classes e situações de PvP e
+                            PvE.</li>
+                        <li><strong>Guia de Economia:</strong> Como fazer dinheiro, melhores práticas de comércio e
+                            investimento.</li>
+                        <li><strong>Exploração Eficiente:</strong> Como encontrar segredos, recursos raros e áreas
+                            escondidas.</li>
+                        <li><strong>Guias de Chefes (Bosses):</strong> Estratégias para derrotar os chefes mais
+                            desafiadores.</li>
+                        <li><strong>Construção de Personagem (Builds):</strong> Sugestões de builds para diferentes
+                            classes e estilos de jogo.</li>
+                        <li><strong>Dicas para Guildas:</strong> Como gerenciar uma guilda, recrutar membros e ter
+                            sucesso em Guerras de Guildas.</li>
                     </ul>
-                    <p>Se você tem uma dica valiosa ou gostaria de contribuir com um tutorial, entre em contato com a equipe RED SKULL ou participe da nossa <a href="../community.html">comunidade</a>!</p>
+                    <p>Se você tem uma dica valiosa ou gostaria de contribuir com um tutorial, entre em contato com a
+                        equipe RED SKULL ou participe da nossa <a href="../community.html">comunidade</a>!</p>
                 </div>
             </article>
 
@@ -158,12 +272,22 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+
     <script src="../js/main.js" defer></script>
     <script src="../js/animations.js" defer></script>
     <script src="js/wiki_interactive.js" defer></script>
     <script src="../js/ux-improvements.js" defer></script>
     <script src="../js/mobile-menu.js" defer></script>
 </body>
+
 </html>
-
-

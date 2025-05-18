@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +14,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-        <style>       
+    <style>
         .intro-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
+
         .intro-gallery img {
             width: 100%;
             height: auto;
@@ -27,19 +29,121 @@
             border: 2px solid var(--wiki-border-color);
             transition: transform 0.3s ease;
         }
+
         .intro-gallery img:hover {
             transform: scale(1.05);
         }
+
         .intro-info-container {
-        background-color: var(--wiki-card-bg);
-        border: 1px solid var(--wiki-card-border);
-        border-radius: 8px;
-        padding: 25px;
-        margin: 30px 0;
-        text-align: left;
+            background-color: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-card-border);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        /* Sempre mostrar o botão do menu */
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Ícone do menu hambúrguer */
+        .sword-icon::before {
+            content: '☰';
+            font-size: 28px;
+        }
+
+        /* Ocultar o menu por padrão */
+        .main-nav .nav-links {
+            display: none;
+            flex-direction: column;
+            background-color: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            padding: 10px;
+            z-index: 1000;
+            border: 1px solid #333;
+        }
+
+        /* Mostrar o menu quando ativo */
+        .main-nav .nav-links.active {
+            display: flex;
+        }
+
+        .main-footer {
+            background-color: #a09898;
+            color: #ccc;
+            padding: 20px 15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #b41212;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff0000;
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Responsivo para dispositivos menores */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-logo {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
+
 <body class="preload wiki-page-body">
     <div id="preloader">
         <div class="skull-loader">
@@ -89,7 +193,7 @@
                     <li><a href="dicas_tutoriais.html">Dicas e Tutoriais</a></li>
                     <li class="sidebar-category">Classes e Treinamento</li>
                     <li><a href="classes.html">Classes</a></li>
-                    
+
                     <li><a href="treinamento_status.html">Treinamento e Status</a></li>
                     <li class="sidebar-category">Conteúdo do Jogo</li>
                     <li><a href="pets.html">Pets</a></li>
@@ -106,10 +210,11 @@
 
         <section id="wiki-main-content">
             <div class="breadcrumb">
-                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Introdução ao Jogo</span>
+                <a href="../index.html">RED SKULL</a> &gt; <a href="wiki_index.html">Wiki</a> &gt; <span>Introdução ao
+                    Jogo</span>
             </div>
 
-                       <!-- Busca e navegação rápida -->
+            <!-- Busca e navegação rápida -->
             <div class="wiki-search-bar-container">
                 <form class="wiki-search-form" action="search-results.html" method="get">
                     <input type="text" id="wiki-search-bar" name="q" placeholder="Buscar na wiki..." autocomplete="off">
@@ -120,26 +225,28 @@
 
             <article>
 
-                <div class="intro-info-container"
-                    <h1 class="page-title">Introdução ao Grind Hero</h1>
-                
+                <div class="intro-info-container" <h1 class="page-title">Introdução ao Grind Hero</h1>
+
                     <h2>Bem-vindo(a) ao Grind Hero!</h2>
-                    <p>Grind Hero é um MMORPG desenvolvido pelo programador Kahdymus (Diego Vieira). O jogo promete entregar uma experiência imersiva para jogadores casuais e hardcore.</p>
+                    <p>Grind Hero é um MMORPG desenvolvido pelo programador Kahdymus (Diego Vieira). O jogo promete
+                        entregar uma experiência imersiva para jogadores casuais e hardcore.</p>
                 </div>
 
                 <div class="intro-info-container">
                     <h2>Status Atual do Jogo</h2>
-                    <p>Atualmente, o Grind Hero está em desenvolvimento, com previsão de lançamento para Julho de 2025. Durante esta fase, novas mecânicas e conteúdos estão sendo testados, e sua opinião será fundamental para moldar o futuro do jogo!</p>
+                    <p>Atualmente, o Grind Hero está em desenvolvimento, com previsão de lançamento para Julho de 2025.
+                        Durante esta fase, novas mecânicas e conteúdos estão sendo testados, e sua opinião será
+                        fundamental para moldar o futuro do jogo!</p>
                     <ul>
                         <li><strong>Fase de Desenvolvimento:</strong> Beta</li>
                         <li><strong>Testes Abertos:</strong> Novos testes em maio através do discord oficial.</li>
                         <li><strong>Data Prevista de Lançamento:</strong> Julho de 2025</li>
                     </ul>
                 </div>
-                    
+
 
             </article>
-            
+
             <div class="wiki-feedback-section">
                 <p>Esta página foi útil?</p>
                 <button class="feedback-yes">Sim</button>
@@ -177,13 +284,21 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
 
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
     <script src="../js/main.js" defer></script>
     <script src="../js/animations.js" defer></script>
     <script src="js/wiki_interactive.js" defer></script>
     <script src="../js/ux-improvements.js" defer></script>
     <script src="../js/mobile-menu.js" defer></script>
 </body>
+
 </html>
-
-
